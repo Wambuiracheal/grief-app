@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -14,7 +15,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('equipment', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('Name',35);
+            $table->string('Use',35);
+            $table->string('Weight',20);
             $table->timestamps();
         });
     }

@@ -14,7 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('sessions', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('Name',55);
+            $table->integer('ClientId')->unsigned();
+            $table->foreign('ClientId')->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('TrainerId')->unsigned();
+            $table->foreign('TrainerId')->references('id')->on('trainers')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('Duration');
             $table->timestamps();
         });
     }

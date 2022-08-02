@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'client 1',
             'email' => 'andy@gmail.com',
             'password' => bcrypt('andymush'),
-            'type'=>1,
+            'type'=>0,
         ]);
 
         \App\Models\User::factory()->create([
