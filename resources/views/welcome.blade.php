@@ -311,7 +311,7 @@
                             pretium.Pellentesque dictum nisl in nibh dictum volutpat nec a quam. Vivamus suscipit nisl
                             quis nulla pretium.</p>
                         <div class="member-signup-btn">
-                            <a href="#" class="primary-btn">Sign up Now</a>
+                            <a href="{{ route('register') }}" class="primary-btn">Sign up Now</a>
                         </div>
                     </div>
                 </div>

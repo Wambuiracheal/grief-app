@@ -26,3 +26,11 @@ Route::get('profile', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Route::get('index', function() { return view('index'); })->middleware('auth');
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('index', function() { return view('index'); });
+    Route::get('book-session', function() { return view('book-session'); });
+
+});
