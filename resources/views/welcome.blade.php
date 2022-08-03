@@ -38,7 +38,7 @@
                                 <img src="/images/logo.png" alt="">
                             </a>
                         </div>
-                        <nav class="mobile-menu">
+                        {{-- <nav class="mobile-menu">
                             <ul>
                                 <li><a href="./index.html">Home</a></li>
                                 <li><a href="./about-us.html">About us</a></li>
@@ -48,7 +48,7 @@
                                 <li><a href="./contact.html">Contact</a></li>
                                 <li class="search-btn search-trigger"><i class="fa fa-search"></i></li>
                             </ul>
-                        </nav>
+                        </nav> --}}
                         <div id="mobile-menu-wrap"></div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
     </header>
     <!-- Header End -->
     <!-- Search Bar Begin -->
-    <section class="search-bar-wrap">
+    {{-- <section class="search-bar-wrap">
         <span class="search-close"><i class="fa fa-close"></i></span>
         <div class="search-bar-table">
             <div class="search-bar-tablecell">
@@ -70,10 +70,10 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Search Bar End -->
     <!-- Top Social Begin -->
-    <div class="top-social">
+    {{-- <div class="top-social">
         <div class="top-social-links">
             <ul>
                 <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
@@ -83,25 +83,25 @@
                 <li><a href="#"><i class="fa fa-behance"></i></a></li>
             </ul>
         </div>
-    </div>
+    </div> --}}
     <!-- Top Social End -->
     <!-- Hero Slider Section Begin -->
     <section class="hero-slider">
         <div class="slide-items owl-carousel">
             <div class="single-slide set-bg active" data-setbg="/images/bg.jpg">
-                <a href="https://www.youtube.com/watch?v=SEVuD_djKrU" class="play-btn pop-up"><i class="fa fa-play"></i></a>
+
                 <h1>Be Fit.Top Gym</h1>
-                <a href="#" class="primary-btn">Read More</a>
+                <a href="#services" class="primary-btn">Read More</a>
             </div>
             <div class="single-slide set-bg" data-setbg="/images/bg-2.jpg">
-                <a href="https://www.youtube.com/watch?v=SEVuD_djKrU" class="play-btn pop-up"><i class="fa fa-play"></i></a>
+
                 <h1>Be Fit.Top Trainer</h1>
-                <a href="#" class="primary-btn">Read More</a>
+                <a href="#services" class="primary-btn">Read More</a>
             </div>
             <div class="single-slide set-bg" data-setbg="/images/bg-3.jpg">
-                <a href="https://www.youtube.com/watch?v=SEVuD_djKrU" class="play-btn pop-up"><i class="fa fa-play"></i></a>
+
                 <h1>Be Fit.Top Body</h1>
-                <a href="#" class="primary-btn">Read More</a>
+                <a href="#services" class="primary-btn">Read More</a>
             </div>
         </div>
     </section>
@@ -160,7 +160,7 @@
     </section>
     <!-- Features Section End -->
     <!-- Services Section Begin -->
-    <section class="services-section spad">
+    <section class="services-section spad" id="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -213,7 +213,7 @@
     </section>
     <!-- Services Section End -->
     <!-- Trainer Section Begin -->
-    <section class="trainer-section set-bg" data-setbg="/images/trainer-bg.jpg">
+    {{-- <section class="trainer-section set-bg" data-setbg="/images/trainer-bg.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -266,7 +266,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Traniner Section End -->
     <!-- Upcoming Event Begin -->
     <section class="upcoming-event-section spad-2">
@@ -305,11 +305,11 @@
                     <div class="member-sign-up set-bg" data-setbg="/images/signup-bg.jpg">
                         <div class="up-title">
                             <span>New</span>
-                            <h5>Personal Trainer</h5>
+                            <h5>Special Programs</h5>
                         </div>
-                        <p>Pellentesque dictum nisl in nibh dictum volutpat nec a quam. Vivamus suscipit nisl quis nulla
-                            pretium.Pellentesque dictum nisl in nibh dictum volutpat nec a quam. Vivamus suscipit nisl
-                            quis nulla pretium.</p>
+                        <p>Get started and join us. Lets take your body to the next level while helping you push past your limits. We work to help
+                            you achieve your fitness goals.
+                        </p>
                         <div class="member-signup-btn">
                             <a href="{{ route('register') }}" class="primary-btn">Sign up Now</a>
                         </div>
@@ -320,50 +320,7 @@
     </section>
     <!-- Upcoming Event End -->
     <!-- Footer Section Begin -->
-    <footer class="footer-section set-bg" data-setbg="/images/footer-bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer-content">
-                        <div class="footer-logo">
-                            <a href="#"><img src="/images/logo.png" alt=""></a>
-                        </div>
-                        <div class="footer-menu">
-                            <ul>
-                                <li><a href="./index.html">Home</a></li>
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Classes</a></li>
-                                <li><a href="#">Instructors</a></li>
-                                <li><a href="#">News</a></li>
-                                <li><a href="#">Contact</a></li>
-                            </ul>
-                        </div>
-                        <div class="subscribe-form">
-                            <form action="#">
-                                <input type="text" placeholder="your Email">
-                                <button type="submit">Sign Up</button>
-                            </form>
-                        </div>
-                        <div class="social-links">
-                            <a href="#"><i class="fa fa-pinterest"></i></a>
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-behance"></i></a>
-                        </div>
-                        <div class="footer-icon-img">
-                            <img src="/images/footer-icon.png" alt="">
-                        </div>
-                        <div class="copyright">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->

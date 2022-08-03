@@ -18,17 +18,17 @@
                 </div>
                 <div class="col-6">
                     <div class="text-end upgrade-btn">
-                        <a href="/book-session" class="btn btn-primary text-white" >Book Session</a>
+                        <a href="/book-session" class="btn btn-primary text-white" >Create Session</a>
                     </div>
                 </div>
             </div>
 
             <div class="row justify-content-center mt-2">
-                <div class="col-md-8">
+                <div class="col-md-10">
 
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Hello Johnny</h4>
+                            <h4 class="card-title text-muted">Hello, <strong>{{ Auth::user()->name }}</strong> </h4>
                             <h5 class="text-center">Upcoming classes</h5>
                         </div>
                         <div class="comment-widgets scrollable">
@@ -41,8 +41,8 @@
                                     <span class="m-b-15 d-block">Lorem Ipsum is simply dummy text of the printing
                                         and type setting industry. </span>
                                     <div class="comment-footer">
-                                        <span class="text-muted float-end">April 14, 2021</span> <span
-                                            class="badge bg-primary">Pending</span> <span
+                                        <span class="text-muted float-end">April 14, 2021 8.00 A.M</span> <span
+                                            class="badge bg-primary">Mrs. Jane</span> <span
                                             class="action-icons">
                                             <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
                                             <a href="javascript:void(0)"><i class="ti-check"></i></a>
@@ -92,7 +92,7 @@
                 </div>
 
                 <!------------------------------------ Sidebar for active sessions ------------------------------>
-
+{{--
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
@@ -137,7 +137,7 @@
 
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
 
@@ -147,8 +147,8 @@
                         <!-- title -->
                         <div class="d-md-flex">
                             <div>
-                                <h4 class="card-title">Attended Sessions</h4>
-                                <h5 class="card-subtitle">Overview of Last attended sessions</h5>
+                                <h4 class="card-title">Training records</h4>
+                                <h5 class="card-subtitle">Overview of Last training sessions</h5>
                             </div>
                             {{-- <div class="ms-auto">
                                 <div class="dl">
@@ -167,7 +167,7 @@
                                 <thead>
                                     <tr>
                                         <th class="border-top-0">Session</th>
-                                        <th class="border-top-0">Trainer</th>
+                                        <th class="border-top-0">Client</th>
                                         <th class="border-top-0">Date</th>
                                         <th class="border-top-0">Duration (Min)</th>
 
