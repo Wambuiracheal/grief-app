@@ -38,6 +38,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('Trainer/Profile', function() { return view('Trainer/Profile'); })->name('trainer.Profile');
 
     Route::get('book-session', function() { return view('book-session'); });
+    Route::get('create-session', function() { return view('Trainer/create-session'); });
+
 
 });
 
