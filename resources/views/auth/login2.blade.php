@@ -265,25 +265,15 @@
                         <div class="row no-gutters align-items-center">
                             <div class="col-md-6">
                                 <div class="form-wrap bg-white">
-                                    <h4 class="btm-sep pb-3 mb-5">Register</h4>
-                                    <form class="form" method="post" action="{{ route('register') }}">
+                                    <h4 class="btm-sep pb-3 mb-5">Login</h4>
+                                    <form method="POST" action="{{ route('login') }}">
                                         @csrf
+
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group position-relative">
                                                     <span class="zmdi zmdi-account"></span>
-                                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Name">
-                                                </div>
-                                                @error('name')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group position-relative">
-                                                    <span class="zmdi zmdi-account"></span>
-                                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email Address">
+                                                    <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email Address">
                                                 </div>
                                                 @error('email')
                                                     <span class="invalid-feedback" role="alert">
@@ -293,8 +283,8 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group position-relative">
-                                                    <span class="zmdi zmdi-key"></span>
-                                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
+                                                    <span class="zmdi zmdi-email"></span>
+                                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
                                                 </div>
                                                 @error('password')
                                                     <span class="invalid-feedback" role="alert">
@@ -302,16 +292,11 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                            <div class="col-12">
-                                                <div class="form-group position-relative">
-                                                    <span class="zmdi zmdi-key"></span>
-                                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="confirm Password">
-                                                </div>
-
+                                            <div class="col-12 text-lg-right">
+                                                <a href="#" class="c-black">Forgot password ?</a>
                                             </div>
-                                            
                                             <div class="col-12 mt-30">
-                                                <button type="submit" id="submit" class="btn btn-lg btn-custom btn-dark btn-block">Sign Up
+                                                <button type="submit" id="submit" class="btn btn-lg btn-custom btn-dark btn-block">Sign In
                                                 </button>
                                             </div>
                                         </div>
@@ -321,10 +306,10 @@
                             <div class="col-md-6">
                                 <div class="content text-center">
                                     <div class="border-bottom pb-5 mb-5">
-                                        <h3 class="c-black">Already a member?</h3>
-                                        <a href="{{ route('login') }}" class="btn btn-outline-primary">Sign In</a>
+                                        <h3 class="c-black">First time here?</h3>
+                                        <a href="{{ route('register') }}" class="btn btn-custom">Sign up</a>
                                     </div>
-                                    <h5 class="c-black mb-4 mt-n1">Or Sign Up With</h5>
+                                    <h5 class="c-black mb-4 mt-n1">Or Sign In With</h5>
                                     <div class="socials">
                                         <a href="#" class="zmdi zmdi-facebook"></a>
                                         <a href="#" class="zmdi zmdi-twitter"></a>

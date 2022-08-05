@@ -1,66 +1,116 @@
-@extends('layouts.top')
+@include('layouts.header')
+@include('layouts.sidebar')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-
-            <div class="card">
-                <div class="card-header"><h3>Hello Johnny</h3></div>
-
-                <div class="card-body">
-                    <div class="upcoming-classes">
-                        <div class="up-title">
-                            <h5>Upcomming Classes</h5>
-                        </div>
-                        &nbsp;
-                        <div class="">
-                            <ul class="classes-time">
-                                <li><img src="/images/stopwatch.png" alt=""> Yoga <span>14:00 - 15:00</span></li>
-                            </ul>
-                        </div>
-                        <hr>
-                        <div class="">
-                            <ul class="classes-time">
-                                <li><img src="/images/stopwatch.png" alt=""> Gym Fitness <span>15:00 - 16:00</span></li>
-                            </ul>
-                        </div>
-                        <hr><div class="">
-                            <ul class="classes-time">
-                                <li><img src="/images/stopwatch.png" alt=""> Pilates <span>16:00 - 17:00</span></li>
-                            </ul>
-                        </div>
-                        <hr>
-                        <div class="">
-                            <ul class="classes-time">
-                                <li><img src="/images/stopwatch.png" alt=""> Gym Fitness <span>11:00 - 12:00</span></li>
-                            </ul>
-                        </div>
-                        <hr>
-
+        <div class="page-wrapper">
+            <div class="page-breadcrumb">
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mb-0 d-flex align-items-center">
+                              <li class="breadcrumb-item"><a href="index.html" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
+                              <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                            </ol>
+                          </nav>
+                        <h1 class="mb-0 fw-bold">Profile</h1>
                     </div>
+                    {{-- <div class="col-6">
+                        <div class="text-end upgrade-btn">
+                            <a href="https://www.wrappixel.com/templates/flexy-bootstrap-admin-template/" class="btn btn-primary text-white"
+                                target="_blank">Upgrade to Pro</a>
+                        </div>
+                    </div> --}}
                 </div>
             </div>
-        </div>
 
-        <!------------------------------------ Sidebar for active sessions ------------------------------>
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-4 col-xlg-3 col-md-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <center class="m-t-30"> <img src="../assets/images/users/5.jpg" class="rounded-circle" width="150" />
+                                    <h4 class="card-title m-t-10">Hanna Gover</h4>
+                                    <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
+                                    <div class="row text-center justify-content-md-center">
+                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i
+                                                    class="icon-people"></i>
+                                                <font class="font-medium">Training</font>
+                                                <br>
+                                                <font class="font-medium">254 hrs</font>
 
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">My Active Sessions</div>
-                    <div class="card-body">
-                        <h5>Zumba</h5>
+                                            </a></div>
+                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i
+                                                    class="icon-picture"></i>
+                                                    <font class="font-medium">Clients</font>
+                                                    <br>
+                                                    <font class="font-medium">24</font>
+                                            </a></div>
+                                    </div>
+                                </center>
+                            </div>
+                            <div>
+                                <hr>
+                            </div>
+                            <div class="card-body"> <small class="text-muted">Email address </small>
+                                <h6>hannagover@gmail.com</h6> <small class="text-muted p-t-30 db">Phone</small>
+                                <h6>+91 654 784 547</h6> <small class="text-muted p-t-30 db">Address</small>
+                                <h6>71 Pilgrim Avenue Chevy Chase, MD 20815</h6>
+
+                            </div>
+                        </div>
                     </div>
-                    <hr>
-                    <div class="card-body">
-                        <h5>Cardio</h5>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="form-horizontal form-material mx-2">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Full Name</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="Johnathan Doe"
+                                                class="form-control form-control-line">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="example-email" class="col-md-12">Email</label>
+                                        <div class="col-md-12">
+                                            <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email"
+                                                id="example-email" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Password</label>
+                                        <div class="col-md-12">
+                                            <input type="password" value="password" class="form-control form-control-line" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Phone No</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="123 456 7890"
+                                                class="form-control form-control-line">
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-success text-white">Update Profile</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <hr>
-                    <div class="card-body">
-                        <h5>Weight-Loss</h5>
-                    </div>
+                    <!-- Column -->
+                </div>
             </div>
+
         </div>
-    </div>
-</div>
-@endsection
+
+@include('layouts.footer')

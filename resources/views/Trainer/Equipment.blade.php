@@ -68,8 +68,8 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title"><i  class="m-r-5 font-18 mdi mdi-numeric-2-box-multiple-outline"></i>Registered Programs</h4>
-                                <h6 class="card-subtitle"><code>Top Gym's</code> Programs aligned with their respective Days of the week.</h6>
+                                <u><h4 class="card-title text-center"><i  class="m-r-5 font-18 mdi mdi-numeric-1-box-multiple-outline"></i>Equipments</h4></u>
+                                {{-- <h6 class="card-subtitle"><code>Top Gym's</code> Programs aligned with their respective Days of the week.</h6> --}}
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-striped">

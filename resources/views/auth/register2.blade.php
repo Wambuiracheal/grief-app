@@ -267,7 +267,6 @@
                                 <div class="form-wrap bg-white">
                                     <h4 class="btm-sep pb-3 mb-5">Register</h4>
                                     <form class="form" method="post" action="{{ route('register') }}">
-                                        @csrf
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="form-group position-relative">
@@ -309,7 +308,9 @@
                                                 </div>
 
                                             </div>
-                                            
+                                            <div class="col-12 text-lg-right">
+                                                <a href="" class="c-black">Forgot password ?</a>
+                                            </div>
                                             <div class="col-12 mt-30">
                                                 <button type="submit" id="submit" class="btn btn-lg btn-custom btn-dark btn-block">Sign Up
                                                 </button>

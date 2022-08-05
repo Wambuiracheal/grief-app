@@ -22,6 +22,12 @@ Route::get('/', function () {
 Route::get('profile', function () {
     return view('profile');
 });
+Route::get('login2', function () {
+    return view('/auth/login2');
+});
+Route::get('register2', function () {
+    return view('/auth/register2');
+});
 
 Auth::routes();
 
@@ -39,6 +45,10 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('book-session', function() { return view('book-session'); });
     Route::get('create-session', function() { return view('Trainer/create-session'); });
+
+    Route::get('profile', function() { return view('profile'); })->name('client.profile');
+    Route::get('bookings', function() { return view('bookings'); })->name('client.bookings');
+    Route::get('programs', function() { return view('programs'); })->name('programs');
 
 
 });
