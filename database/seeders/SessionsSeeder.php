@@ -14,6 +14,12 @@ class SessionsSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // DB::table('sessions')->insert([
+        //     'UserId'=>1,
+        //     'Name' => 'Trainer George',
+        //     'Phone' => '+254785324',
+        //     'Sector' => 'Cardio',
+
+        // ]);
     }
 }

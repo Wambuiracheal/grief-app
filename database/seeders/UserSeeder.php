@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TrainersSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,11 +15,12 @@ class TrainersSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('trainers')->insert([
-            'UserId'=>1,
-            'Name' => 'Trainer George',
-            'Phone' => '+254785324',
-            'Sector' => 'Cardio',
+        DB::table('users')->insert([
+            'id'=>1,
+            'name' => 'Trainer George',
+            'email' => 'andymush@gmail.com',
+            'password' => bcrypt('andymush'),
+            'type' => '1',
 
         ]);
     }

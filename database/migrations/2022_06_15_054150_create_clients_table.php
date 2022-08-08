@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');
+            //$table->integer('UserId')->unsigned();
+            $table->foreignId('UserId')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('Name');
             $table->integer('Phone');
             $table->string('Workout_plan',100);

@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Programs extends Model
 {
     use HasFactory;
+
+    protected $table ='programs';
+
+    public $primaryKey = 'id';
+
+    use HasFactory;
+
+    protected $fillable= [
+
+        'Name',
+        'Day',
+        'Duration',
+        'TrainerId',
+        'Price',
+
+    ];
 }
