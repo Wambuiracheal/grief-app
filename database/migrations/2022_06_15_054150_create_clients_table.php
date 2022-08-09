@@ -18,8 +18,8 @@ return new class extends Migration
             //$table->integer('UserId')->unsigned();
             $table->foreignId('UserId')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('Name');
-            $table->integer('Phone');
-            $table->string('Workout_plan',100);
+            $table->integer('Phone')->nullable();
+            $table->string('Workout_plan',100)->nullable();
             $table->timestamps();
         });
     }

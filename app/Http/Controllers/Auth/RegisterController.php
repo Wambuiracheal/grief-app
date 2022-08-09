@@ -90,6 +90,7 @@ class RegisterController extends Controller
         $clients = Clients::create([
             'UserId' => $user->id,
             'Name' => $user->name,
+            '' => $user->p
         ]);
 
         return $user;

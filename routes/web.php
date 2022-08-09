@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProgramsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\SessionsController;
 
 
 /*
@@ -34,9 +36,12 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('index', function() { return view('index'); })->middleware('auth');
+Route::resource('programs',ProgramsController::class);
+Route::resource('sessions',SessionsController::class);
+
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('index', function() { return view('index'); })->name('client.index');
+    //Route::get('index', function() { return view('index'); })->name('client.index');
     Route::get('Trainer/index', function() { return view('Trainer/index'); })->name('trainer.index');
     Route::get('Trainer/Bookings', function() { return view('Trainer/Bookings'); })->name('trainer.Bookings');
     Route::get('Trainer/Equipment', function() { return view('Trainer/Equipment'); })->name('trainer.Equipment');
@@ -49,6 +54,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('profile', function() { return view('profile'); })->name('client.profile');
     Route::get('bookings', function() { return view('bookings'); })->name('client.bookings');
     Route::get('programs', function() { return view('programs'); })->name('programs');
+
+    Route::get('book-session', [ProgramsController::class,'index'])->name('booksession');
+    Route::post('session', [SessionsController::class, 'store'])->name('create-session');
+    Route::get('index', [SessionsController::class,'index'])->name('client.index');
 
 
 });

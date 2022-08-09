@@ -17,7 +17,7 @@ class ProgramsSeeder extends Seeder
     {
         DB::table('programs')->insert([
 
-            'Name' => 'Trainer George',
+            'Name' => 'Cardio',
             'Day' => 'Monday',
             'Duration' => '45',
             'TrainerId' => 1,

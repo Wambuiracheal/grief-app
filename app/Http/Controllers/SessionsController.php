@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreSessionsRequest;
 use App\Http\Requests\UpdateSessionsRequest;
+use App\Models\Clients;
 use App\Models\Sessions;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class SessionsController extends Controller
 {
@@ -15,7 +19,16 @@ class SessionsController extends Controller
      */
     public function index()
     {
-        //
+        $get_client_id = Clients::select('id')
+        ->where('UserId',Auth::user()->id)
+        ->first();
+
+        $bookings = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
+        ->select('trainers.Name as trainer','sessions.ClientId as client','sessions.Name as session','sessions.Duration','sessions.Date')
+        ->where('ClientId',$get_client_id->id)
+        ->get();
+
+        return view('index', compact('bookings'));
     }
 
     /**
@@ -34,9 +47,28 @@ class SessionsController extends Controller
      * @param  \App\Http\Requests\StoreSessionsRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSessionsRequest $request)
+    public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'SessionName' => 'required',
+            'Trainer' => 'required',
+            'Date' => 'required',
+            'Duration' => 'required',
+
+        ]);
+
+        $session = new Sessions;
+
+        $session->ClientId=$request->input('ClientId');
+        $session->Name=$request->input('SessionName');
+        $session->TrainerId=$request->input('Trainer');
+        $session->Date=$request->input('Date');
+        $session->Duration=$request->input('Duration');
+
+        //Log::info($session);
+        $session->save();
+
+        return redirect('index')->with('success','Session booked successfully');
     }
 
     /**
