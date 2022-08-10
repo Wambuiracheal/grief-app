@@ -4,6 +4,8 @@ use App\Http\Controllers\ProgramsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\TrainersController;
+use App\Http\Controllers\BookingsController;
 
 
 /*
@@ -42,11 +44,11 @@ Route::resource('sessions',SessionsController::class);
 
 Route::group(['middleware' => 'auth'], function(){
     //Route::get('index', function() { return view('index'); })->name('client.index');
-    Route::get('Trainer/index', function() { return view('Trainer/index'); })->name('trainer.index');
-    Route::get('Trainer/Bookings', function() { return view('Trainer/Bookings'); })->name('trainer.Bookings');
+    //Route::get('Trainer/index', function() { return view('Trainer/index'); })->name('trainer.index');
+    //Route::get('Trainer/Bookings', function() { return view('Trainer/Bookings'); })->name('trainer.Bookings');
     Route::get('Trainer/Equipment', function() { return view('Trainer/Equipment'); })->name('trainer.Equipment');
     Route::get('Trainer/Programs', function() { return view('Trainer/Programs'); })->name('trainer.Programs');
-    Route::get('Trainer/Profile', function() { return view('Trainer/Profile'); })->name('trainer.Profile');
+    //Route::get('Trainer/Profile', function() { return view('Trainer/Profile'); })->name('trainer.Profile');
 
     Route::get('book-session', function() { return view('book-session'); });
     Route::get('create-session', function() { return view('Trainer/create-session'); });
@@ -58,6 +60,13 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('book-session', [ProgramsController::class,'index'])->name('booksession');
     Route::post('session', [SessionsController::class, 'store'])->name('create-session');
     Route::get('index', [SessionsController::class,'index'])->name('client.index');
+
+    Route::get('Trainer/index', [TrainersController::class,'index'])->name('trainer.index');
+    Route::get('Trainer/Bookings', [BookingsController::class,'index'])->name('trainer.Bookings');
+    Route::post('Trainer/Bookings/{id}', [BookingsController::class,'approvebooking'])->name('approve-booking');
+    Route::get('Trainer/Profile', [TrainersController::class,'profile'])->name('trainer.Profile');
+
+
 
 
 });

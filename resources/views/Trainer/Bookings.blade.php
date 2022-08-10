@@ -22,9 +22,9 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title"><i  class="m-r-5 font-18 mdi mdi-numeric-2-box-multiple-outline"></i>Striped rows</h4>
-                                <h6 class="card-subtitle">Use <code>.table-striped</code> to add zebra-striping to any
-                                    table row within the <code>&lt;tbody&gt;</code>.</h6>
+                                <h4 class="card-title">
+                                    <i  class="m-r-5 font-18 mdi mdi-numeric-2-box-multiple-outline"></i>Training requests</h4>
+                                <h6 class="card-subtitle">Client training request bookings</h6>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-striped">
@@ -35,16 +35,35 @@
                                             <th scope="col">Client</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Duration</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Zumba</td>
-                                            <td>Mrs.Wambui</td>
-                                            <td>April 20th, 2022</td>
-                                            <td>40 min</td>
-                                        </tr>
+                                        @foreach ($bookings as $booking)
+                                            <tr>
+                                                <th scope="row">{{ $booking->id }}</th>
+                                                <td>{{ $booking->session}}</td>
+                                                <td>{{ $booking->client }}</td>
+                                                <td>{{ $booking->Date }}</td>
+                                                <td>{{ $booking->Duration }}</td>
+                                                <td>
+
+                                                    <form action="/Trainer/Bookings/{{ $booking->id }}" method="POST"  >
+                                                        @csrf
+                                                        @if ($booking->Status !== 'Approved')
+                                                            <button value="Approved" name="Status" id="Status" type="submit" class="btn btn-outline-primary " >
+                                                                <i class="mdi mdi-thumb-up"></i> &nbsp;Approve
+                                                            </button>&nbsp;
+                                                        @else
+                                                            <button value="Pending" name="Status" id="Status" type="submit" class="btn btn-success" disabled>
+                                                                <i class="mdi mdi-dumbbell"></i> Approved
+                                                            </button>&nbsp;
+                                                        @endif
+                                                    </form>
+
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
