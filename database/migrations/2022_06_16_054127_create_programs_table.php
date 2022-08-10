@@ -14,7 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('programs', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->string('Name',65);
+            $table->string('Day',65);
+            $table->string('Duration',50);
+            $table->integer('TrainerId')->unsigned();
+            $table->foreign('TrainerId')->references('id')->on('trainers')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('Price');
             $table->timestamps();
         });
     }

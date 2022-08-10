@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTrainersRequest;
 use App\Http\Requests\UpdateTrainersRequest;
 use App\Models\Trainers;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Sessions;
 
 class TrainersController extends Controller
 {
@@ -15,7 +17,31 @@ class TrainersController extends Controller
      */
     public function index()
     {
-        //
+        $get_trainer_id = Trainers::select('id')
+        ->where('UserId',Auth::user()->id)
+        ->first();
+
+        $bookings = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
+        ->join('clients','sessions.ClientId','clients.id')
+        ->select('trainers.Name as trainer','clients.Name as client','sessions.ClientId as clientid','sessions.Name as session','sessions.Duration','sessions.Date')
+        ->where('ClientId',$get_trainer_id->id)
+        ->take(3)
+        ->get();
+
+        return view('Trainer/index', compact('bookings'));
+
+    }
+
+    public function profile()
+    {
+        $get_trainer_id = Trainers::select('id')
+        ->where('UserId',Auth::user()->id)
+        ->first();
+
+        $profile = Trainers::all()->where('id',$get_trainer_id)->first();
+
+        return view('Trainer/Profile', compact('profile'));
+
     }
 
     /**

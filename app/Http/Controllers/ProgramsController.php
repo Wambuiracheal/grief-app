@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProgramsRequest;
 use App\Http\Requests\UpdateProgramsRequest;
 use App\Models\Programs;
+use App\Models\Clients;
+use Illuminate\Support\Facades\Auth;
 
 class ProgramsController extends Controller
 {
@@ -15,7 +17,15 @@ class ProgramsController extends Controller
      */
     public function index()
     {
-        //
+        $programs = Programs::join('trainers','programs.TrainerId','=','trainers.id')
+        ->select('trainers.id As trainerId','trainers.Name As trainer','programs.Name As program','programs.Day','programs.Duration','programs.Price')
+        ->get();
+
+        $get_client_id = Clients::select('id')
+        ->where('UserId',Auth::user()->id)
+        ->first();
+
+        return view('/book-session', compact('programs','get_client_id'));
     }
 
     /**
