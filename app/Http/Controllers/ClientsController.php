@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Clients;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientsController extends Controller
 {
@@ -15,6 +16,21 @@ class ClientsController extends Controller
     public function index()
     {
         //
+    }
+
+    public function profile()
+    {
+        $get_trainer_id = Clients::select('id')
+        ->where('UserId',Auth::user()->id)
+        ->first();
+
+        //$profile = Trainers::select('Name')->where('id',$get_trainer_id)->get();
+
+        $profile = Clients::where('UserId',Auth::user()->id)->first();
+
+
+        return view('profile', compact('profile'));
+
     }
 
     /**

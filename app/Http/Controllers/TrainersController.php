@@ -38,7 +38,10 @@ class TrainersController extends Controller
         ->where('UserId',Auth::user()->id)
         ->first();
 
-        $profile = Trainers::all()->where('id',$get_trainer_id)->first();
+        //$profile = Trainers::select('Name')->where('id',$get_trainer_id)->get();
+
+        $profile = Trainers::where('UserId',Auth::user()->id)->first();
+
 
         return view('Trainer/Profile', compact('profile'));
 

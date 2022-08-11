@@ -108,14 +108,14 @@
                                 <img src="assets/images/users/profile.png" alt="user" class="rounded-circle" width="31"> &nbsp;<h5>John Doe</h5>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i>
-                                    My Profile</a>
-                                <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i>
-                                    My Balance</a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                  document.getElementById('logout-form').submit();">
-                                     {{ __('Logout') }}
+                                <a class="dropdown-item" href="{{ route('client.profile') }}"><i class="ti-user m-r-5 m-l-5"></i>
+                                    My Profile
+                                </a>
+                                {{-- <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i>
+                                    My Balance
+                                </a> --}}
+                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="mdi mdi-logout m-l-5 m-r-5"></i>{{ __('Logout') }}
                                  </a>
 
                                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

@@ -140,12 +140,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($present_sessions as $session)
+
                                     <tr>
-                                        <td>Zumba</td>
-                                        <td>John Doe</td>
-                                        <td>20th June, 2001</td>
-                                        <td>40</td>
+                                        <td>{{ $session->session }}</td>
+                                        <td>{{ $session->trainer }}</td>
+                                        <td>{{ $session->Date }}</td>
+                                        <td>{{ $session->Duration }}</td>
                                     </tr>
+                                    
+                                    @endforeach
+
 
                                 </tbody>
                             </table>

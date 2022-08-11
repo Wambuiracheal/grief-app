@@ -26,9 +26,30 @@ class SessionsController extends Controller
         $bookings = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
         ->select('trainers.Name as trainer','sessions.ClientId as client','sessions.Name as session','sessions.Duration','sessions.Date')
         ->where('ClientId',$get_client_id->id)
+        ->where('sessions.Status','Approved')
+        ->paginate(3);
+
+        $present_sessions = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
+        ->select('trainers.Name as trainer','sessions.ClientId as client','sessions.Name as session','sessions.Duration','sessions.Date')
+        ->where('ClientId',$get_client_id->id)
+        ->where('sessions.Attendance','Present')
         ->get();
 
-        return view('index', compact('bookings'));
+        return view('index', compact('bookings','present_sessions'));
+    }
+
+    public function sessions()
+    {
+        $get_client_id = Clients::select('id')
+        ->where('UserId',Auth::user()->id)
+        ->first();
+
+        $Allsessions = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
+        ->select('trainers.Name as trainer','sessions.ClientId as client','sessions.Name as session','sessions.Duration','sessions.Date','sessions.Status','sessions.Attendance')
+        ->where('ClientId',$get_client_id->id)
+        ->get();
+
+        return view('sessions', compact('Allsessions'));
     }
 
     /**

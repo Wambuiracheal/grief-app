@@ -10,11 +10,11 @@
                         <span class="hide-menu">Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                {{-- <li class="sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('client.profile') }}" aria-expanded="false">
                         <i class="mdi mdi-account-network"></i><span class="hide-menu">Profile</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('client.bookings') }}" aria-expanded="false">
                         <i class="mdi mdi-border-all"></i>
@@ -22,7 +22,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('programs') }}" aria-expanded="false">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('client.sessions') }}" aria-expanded="false">
                         <i class="mdi mdi-face"></i>
                         <span class="hide-menu">Sessions</span>
                     </a>

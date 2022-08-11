@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Trainers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Sessions;
+use App\Models\Clients;
 
 class BookingsController extends Controller
 {
@@ -31,6 +32,21 @@ class BookingsController extends Controller
         $booking_status = Sessions::select('Status')->get();
 
         return view('Trainer/Bookings', compact('bookings'));
+    }
+
+    public function clientbookings()
+    {
+        $get_client_id = Clients::select('id')
+        ->where('UserId',Auth::user()->id)
+        ->first();
+
+        $bookings = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
+        ->select('trainers.Name as trainer','sessions.ClientId as client','sessions.Name as session','sessions.Duration','sessions.Date','sessions.Status')
+        ->where('ClientId',$get_client_id->id)
+        ->where('sessions.Status','Pending')
+        ->get();
+
+        return view('bookings', compact('bookings'));
     }
 
     public function approvebooking(Request $request,Sessions $id)

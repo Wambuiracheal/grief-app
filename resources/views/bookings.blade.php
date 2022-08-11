@@ -31,21 +31,28 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Session Name</th>
-                                            <th scope="col">Client</th>
+                                            <th scope="col">Trainer</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Duration</th>
                                             <th scope="col">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Zumba</td>
-                                            <td>Mrs.Wambui</td>
-                                            <td>April 20th, 2022</td>
-                                            <td>40 min</td>
-                                            <td>Approved</td>
-                                        </tr>
+                                        @foreach ($bookings as $booking)
+
+                                            <tr>
+                                                <td>{{ $loop->iteration }}
+                                                <td>{{ $booking->session }}</td>
+                                                <td>{{ $booking->trainer }}</td>
+                                                <td>{{ $booking->Date }}</td>
+                                                <td>{{ $booking->Duration }}</td>
+                                                <td>
+                                                    <button class="btn btn-outline-warning" disabled><i class="m-r-10 mdi mdi-clock"></i>{{ $booking->Status }}
+                                                </td>
+                                            </tr>
+
+                                         @endforeach
+
                                     </tbody>
                                 </table>
                             </div>

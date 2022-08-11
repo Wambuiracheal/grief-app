@@ -35,8 +35,8 @@
                             <div class="card">
                                 <div class="card-body">
                                     <center class="m-t-30"> <img src="../assets/images/users/5.jpg" class="rounded-circle" width="150" />
-                                        <h4 class="card-title m-t-10">Hanna Gover</h4>
-                                        <h6 class="card-subtitle">Accoubts Manager Amix corp</h6>
+                                        <h4 class="card-title m-t-10">{{ $profile->Name }}</h4>
+                                        <h6 class="card-subtitle">{{ $profile->Sector }}</h6>
                                         <div class="row text-center justify-content-md-center">
                                             <div class="col-4"><a href="javascript:void(0)" class="link"><i
                                                         class="icon-people"></i>
@@ -49,7 +49,7 @@
                                                         class="icon-picture"></i>
                                                         <font class="font-medium">Clients</font>
                                                         <br>
-                                                        <font class="font-medium">24</font>
+                                                        <font class="font-medium">5</font>
                                                 </a></div>
                                         </div>
                                     </center>
@@ -57,12 +57,15 @@
                                 <div>
                                     <hr>
                                 </div>
-                                <div class="card-body"> <small class="text-muted">Email address </small>
-                                    <h6>hannagover@gmail.com</h6> <small class="text-muted p-t-30 db">Phone</small>
-                                    <h6>+91 654 784 547</h6> <small class="text-muted p-t-30 db">Address</small>
-                                    <h6>71 Pilgrim Avenue Chevy Chase, MD 20815</h6>
+                                {{-- <div class="card-body">
+                                    <small class="text-muted">Email address </small>
+                                        <h6>hannagover@gmail.com</h6>
+                                    <small class="text-muted p-t-30 db">Phone</small>
+                                        <h6>{{ $profile->Phone }}</h6>
+                                    <small class="text-muted p-t-30 db">Address</small>
+                                        <h6>71 Pilgrim Avenue Chevy Chase, MD 20815</h6>
 
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                         <!-- Column -->
@@ -74,7 +77,14 @@
                                         <div class="form-group">
                                             <label class="col-md-12">Full Name</label>
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="Johnathan Doe"
+                                                <input type="text" placeholder="{{ $profile->Name }}"
+                                                    class="form-control form-control-line">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-md-12">Sector</label>
+                                            <div class="col-md-12">
+                                                <input type="text" placeholder="{{ $profile->Sector }}"
                                                     class="form-control form-control-line">
                                             </div>
                                         </div>
@@ -85,16 +95,16 @@
                                                     id="example-email" disabled>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label class="col-md-12">Password</label>
                                             <div class="col-md-12">
                                                 <input type="password" value="password" class="form-control form-control-line" disabled>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="form-group">
                                             <label class="col-md-12">Phone No</label>
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="123 456 7890"
+                                                <input type="text" placeholder="{{ $profile->Phone }}"
                                                     class="form-control form-control-line">
                                             </div>
                                         </div>

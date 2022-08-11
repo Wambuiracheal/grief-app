@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\TrainersController;
 use App\Http\Controllers\BookingsController;
+use App\Http\Controllers\ClientsController;
 
 
 /*
@@ -40,6 +41,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // Route::get('index', function() { return view('index'); })->middleware('auth');
 Route::resource('programs',ProgramsController::class);
 Route::resource('sessions',SessionsController::class);
+Route::resource('trainers',TrainersController::class);
 
 
 Route::group(['middleware' => 'auth'], function(){
@@ -53,9 +55,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('book-session', function() { return view('book-session'); });
     Route::get('create-session', function() { return view('Trainer/create-session'); });
 
-    Route::get('profile', function() { return view('profile'); })->name('client.profile');
+    //Route::get('profile', function() { return view('profile'); })->name('client.profile');
     Route::get('bookings', function() { return view('bookings'); })->name('client.bookings');
-    Route::get('programs', function() { return view('programs'); })->name('programs');
+    //Route::get('programs', function() { return view('programs'); })->name('programs');
 
     Route::get('book-session', [ProgramsController::class,'index'])->name('booksession');
     Route::post('session', [SessionsController::class, 'store'])->name('create-session');
@@ -66,7 +68,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('Trainer/Bookings/{id}', [BookingsController::class,'approvebooking'])->name('approve-booking');
     Route::get('Trainer/Profile', [TrainersController::class,'profile'])->name('trainer.Profile');
 
-
+    Route::get('profile', [ClientsController::class,'profile'])->name('client.profile');
+    Route::get('sessions', [SessionsController::class, 'sessions'])->name(('client.sessions'));
+    Route::get('bookings', [BookingsController::class, 'clientbookings'])->name('client.bookings');
 
 
 });
