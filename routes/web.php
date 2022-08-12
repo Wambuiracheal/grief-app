@@ -7,7 +7,7 @@ use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\TrainersController;
 use App\Http\Controllers\BookingsController;
 use App\Http\Controllers\ClientsController;
-
+use App\Http\Controllers\EquipmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,8 +48,8 @@ Route::group(['middleware' => 'auth'], function(){
     //Route::get('index', function() { return view('index'); })->name('client.index');
     //Route::get('Trainer/index', function() { return view('Trainer/index'); })->name('trainer.index');
     //Route::get('Trainer/Bookings', function() { return view('Trainer/Bookings'); })->name('trainer.Bookings');
-    Route::get('Trainer/Equipment', function() { return view('Trainer/Equipment'); })->name('trainer.Equipment');
-    Route::get('Trainer/Programs', function() { return view('Trainer/Programs'); })->name('trainer.Programs');
+    //Route::get('Trainer/Equipment', function() { return view('Trainer/Equipment'); })->name('trainer.Equipment');
+    //Route::get('Trainer/Programs', function() { return view('Trainer/Programs'); })->name('trainer.Programs');
     //Route::get('Trainer/Profile', function() { return view('Trainer/Profile'); })->name('trainer.Profile');
 
     Route::get('book-session', function() { return view('book-session'); });
@@ -59,7 +59,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('bookings', function() { return view('bookings'); })->name('client.bookings');
     //Route::get('programs', function() { return view('programs'); })->name('programs');
 
-    Route::get('book-session', [ProgramsController::class,'index'])->name('booksession');
+    Route::get('book-session', [SessionsController::class,'booksession'])->name('booksession');
     Route::post('session', [SessionsController::class, 'store'])->name('create-session');
     Route::get('index', [SessionsController::class,'index'])->name('client.index');
 
@@ -72,6 +72,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('sessions', [SessionsController::class, 'sessions'])->name(('client.sessions'));
     Route::get('bookings', [BookingsController::class, 'clientbookings'])->name('client.bookings');
 
+    Route::get('Trainer/Programs', [ProgramsController::class, 'index'])->name('trainer.Programs');
+    Route::post('Trainer/Programs', [ProgramsController::class, 'store'])->name('create.program');
+
+    Route::get('Trainer/Equipment', [EquipmentController::class, 'index'])->name('trainer.Equipment');
+    Route::post('Trainer/Equipment', [EquipmentController::class, 'store'])->name('create.equipment');
+
+    Route::get('Trainer/Sessions', [SessionsController::class, 'approvedsessions'])->name('trainer.Sessions');
+    Route::post('Trainer/Sessions/{id}', [SessionsController::class, 'mark_attendance'])->name('mark.attendance');
 
 });
 

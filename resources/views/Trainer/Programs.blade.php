@@ -17,45 +17,60 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mb-2">
+                <div class="d-grid gap-2 d-md-block">
+                    <button class="btn btn-info text-white" type="button" id="add">Add program</button>
+                </div>
+            </div>
+
+            <div class="row" style="display: none;" id="addprogram">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action= " " method="POST">
+                            <form action= "{{ route('create.program') }} " method="POST">
+                                @csrf
                                 <fieldset>
                                     <legend>Program details:</legend>
+                                    <p>Add program </p>
                                     <div class="row p-2 mb-4">
                                         <div class="col-md-4">
                                             <div class="mb-0 p-2">
-                                                <label for="Unit" class="form-label">Program Name</label>
-                                                <input type="text" name="unit" class="form-control" placeholder="Fat shredder"/>
+                                                <label for="Name" class="form-label">Program Name</label>
+                                                <input type="text" name="ProgramName" class="form-control" placeholder="Fat shredder"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-0 p-2">
-                                                <label for="Name" class="form-label">Day of the week</label>
-                                                <Select name="unit_id" type="text"  class="form-select" id="Unit " aria-describedby="Unit " required>
-                                                    <option value=""> Zumba</option>
-                                                    <option value="">Cardio</option>
+                                                <label for="Day" class="form-label">Day of the week</label>
+                                                <Select name="Day" type="text"  class="form-select" id="Day " aria-describedby="Day " required>
+                                                    <option value=""> Choose day</option>
+                                                    <option value="Monday">Monday</option>
+                                                    <option value="Tuesday">Tuesday</option>
+                                                    <option value="Wednesday">Wednesday</option>
+                                                    <option value="Thursday">Thursday</option>
+                                                    <option value="Friday">Friday</option>
+                                                    <option value="Saturday">Saturday</option>
                                                 </Select>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-0 p-2">
-                                                <label for="Name" class="form-label">Duration</label>
-                                                <input type="number" name="unit" class="form-control" placeholder="45 min"/>
-
+                                                <label for="Duration" class="form-label">Duration</label>
+                                                <input type="Duration" name="Duration" class="form-control" placeholder="45 min"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-0 p-2">
-                                                <label for="Name" class="form-label">Price</label>
-                                                <input type="number" name="unit" class="form-control" placeholder="6500"/>
+                                                <label for="Price" class="form-label">Price</label>
+                                                <input type="number" name="Price" class="form-control" placeholder="Kshs 6500"/>
                                             </div>
                                         </div>
 
+                                        <input id="invisible_id" name="TrainerId" type="hidden" value="{{ $get_trainer_id->id }}">
+
+
                                         <div class="d-grid gap-2 ">
-                                            <button type="submit" value="Upload" class="btn btn-success text-white" style="width:20%;">
+                                            <button type="submit" class="btn btn-success text-white" style="width:20%;">
                                                 <i class="bi bi-cloud-upload"></i> Submit
                                             </button>
                                         </div>
@@ -80,20 +95,23 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Session Name</th>
-                                            <th scope="col">Client</th>
-                                            <th scope="col">Date</th>
+                                            <th scope="col">Program</th>
+                                            <th scope="col">Day</th>
                                             <th scope="col">Duration</th>
+                                            <th scope="col">Price</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Zumba</td>
-                                            <td>Mrs.Wambui</td>
-                                            <td>April 20th, 2022</td>
-                                            <td>40 min</td>
-                                        </tr>
+                                        @foreach ($programs as $program)
+                                            <tr>
+                                                <th scope="row">{{ $loop->iteration }}</th>
+                                                <td>{{ $program->program }}</td>
+                                                <td>{{ $program->Day }}</td>
+                                                <td>{{ $program->Duration }} min</td>
+                                                <td>Kshs {{ $program->Price }}</td>
+                                            </tr>
+                                        @endforeach
+
                                     </tbody>
                                 </table>
                             </div>
@@ -108,5 +126,11 @@
 
     </div>
 
+<script>
+    $('#add').click(function(){
+        $("#addprogram").toggle();
+    });
+
+</script>
 
 @include('Trainer/Layouts.footer')

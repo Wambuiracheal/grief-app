@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreEquipmentRequest;
 use App\Http\Requests\UpdateEquipmentRequest;
 use App\Models\Equipment;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+
 
 class EquipmentController extends Controller
 {
@@ -15,7 +19,9 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-        //
+        $equipments = Equipment::all();
+
+        return view('Trainer/Equipment',compact('equipments'));
     }
 
     /**
@@ -34,9 +40,28 @@ class EquipmentController extends Controller
      * @param  \App\Http\Requests\StoreEquipmentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreEquipmentRequest $request)
+    public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'Equipment' => 'required',
+            'Use' => 'required',
+            //'Weight' => 'required',
+            'Price' => 'required',
+
+        ]);
+
+        $equipment = new Equipment;
+
+        $equipment->Name=$request->input('Equipment');
+        $equipment->Use=$request->input('Use');
+        $equipment->Weight=$request->input('Weight');
+        $equipment->Price=$request->input('Price');
+
+
+        //Log::info($equipment);
+        $equipment->save();
+
+        return redirect('Trainer/Equipment')->with('success','Equipment added successfully');
     }
 
     /**

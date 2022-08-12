@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-6">
                     <div class="text-end upgrade-btn">
-                        <a href="/create-session" class="btn btn-primary text-white" >Create Session</a>
+                        <a href="/Trainer/Bookings" class="btn btn-primary text-white" >Bookings</a>
                     </div>
                 </div>
             </div>

@@ -53,7 +53,7 @@ class BookingsController extends Controller
     {
         //\Log::info($id);
 
-        $unit = Sessions::where('id',$id->id)
+        $session = Sessions::where('id',$id->id)
         ->update([
             'Status'=>$request->Status
         ]);

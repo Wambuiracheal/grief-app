@@ -17,41 +17,48 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mb-2">
+                <div class="d-grid gap-2 d-md-block">
+                    <button class="btn btn-info text-white" type="button" id="add">Add program</button>
+                </div>
+            </div>
+
+            <div class="row" style="display:none;" id="addequipment">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action= " " method="POST">
+                            <form action= "{{ route('create.equipment') }}" method="POST">
+                                @csrf
                                 <fieldset>
                                     <legend>Equipment details:</legend>
                                     <div class="row p-2 mb-4">
                                         <div class="col-md-3">
                                             <div class="mb-0 p-2">
-                                                <label for="Unit" class="form-label"> Name</label>
-                                                <input type="text" name="unit" class="form-control" placeholder="Dumbbell"/>
+                                                <label for="Equipment" class="form-label"> Name</label>
+                                                <input type="text" name="Equipment" class="form-control" placeholder="Dumbbell"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-0 p-2">
-                                                <label for="Name" class="form-label">Use</label>
-                                                <input type="text" name="unit" class="form-control" placeholder="Weight lifting"/>
+                                                <label for="Use" class="form-label">Use</label>
+                                                <input type="text" name="Use" class="form-control" placeholder="Weight lifting"/>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="mb-0 p-2">
-                                                <label for="Name" class="form-label">Weight</label>
-                                                <input type="number" name="unit" class="form-control" placeholder="45 kg"/>
+                                                <label for="Weight" class="form-label">Weight (kg)</label>
+                                                <input type="number" name="Weight" class="form-control" placeholder="45 kg"/>
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="mb-0 p-2">
-                                                <label for="Name" class="form-label">Price</label>
-                                                <input type="number" name="unit" class="form-control" placeholder="6500"/>
+                                                <label for="Price" class="form-label">Price (kshs)</label>
+                                                <input type="number" name="Price" class="form-control" placeholder="6500"/>
                                             </div>
                                         </div>
 
                                         <div class="d-grid gap-2 ">
-                                            <button type="submit" value="Upload" class="btn btn-success text-white" style="width:20%;">
+                                            <button type="submit" class="btn btn-success text-white" style="width:20%;">
                                                 <i class="bi bi-cloud-upload"></i> Submit
                                             </button>
                                         </div>
@@ -76,20 +83,22 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Session Name</th>
-                                            <th scope="col">Client</th>
-                                            <th scope="col">Date</th>
-                                            <th scope="col">Duration</th>
+                                            <th scope="col">Equipment</th>
+                                            <th scope="col">Use</th>
+                                            <th scope="col">Weight</th>
+                                            <th scope="col">Price</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Zumba</td>
-                                            <td>Mrs.Wambui</td>
-                                            <td>April 20th, 2022</td>
-                                            <td>40 min</td>
-                                        </tr>
+                                        @foreach ($equipments as $equipment)
+                                            <tr>
+                                                <th scope="row">{{ $loop->iteration }}</th>
+                                                <td>{{ $equipment->Name }}</td>
+                                                <td>{{ $equipment->Use }}</td>
+                                                <td>{{ $equipment->Weight }} kg</td>
+                                                <td>Kshs {{ $equipment->Price }}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -104,5 +113,10 @@
 
     </div>
 
+    <script>
+        $('#add').click(function(){
+            $("#addequipment").toggle();
+        });
 
+    </script>
 @include('Trainer/Layouts.footer')

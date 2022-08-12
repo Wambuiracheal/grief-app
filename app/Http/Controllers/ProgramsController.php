@@ -7,6 +7,9 @@ use App\Http\Requests\UpdateProgramsRequest;
 use App\Models\Programs;
 use App\Models\Clients;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Models\Trainers;
 
 class ProgramsController extends Controller
 {
@@ -21,11 +24,11 @@ class ProgramsController extends Controller
         ->select('trainers.id As trainerId','trainers.Name As trainer','programs.Name As program','programs.Day','programs.Duration','programs.Price')
         ->get();
 
-        $get_client_id = Clients::select('id')
+        $get_trainer_id = Trainers::select('id')
         ->where('UserId',Auth::user()->id)
         ->first();
 
-        return view('/book-session', compact('programs','get_client_id'));
+        return view('Trainer/Programs', compact('programs','get_trainer_id'));
     }
 
     /**
@@ -44,9 +47,29 @@ class ProgramsController extends Controller
      * @param  \App\Http\Requests\StoreProgramsRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreProgramsRequest $request)
+    public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'ProgramName' => 'required',
+            'Day' => 'required',
+            'Duration' => 'required',
+            'Price' => 'required',
+
+        ]);
+
+        $program = new Programs;
+
+        $program->Name=$request->input('ProgramName');
+        $program->TrainerId=$request->input('TrainerId');
+        $program->Day=$request->input('Day');
+        $program->Duration=$request->input('Duration');
+        $program->Price=$request->input('Price');
+
+
+        Log::info($program);
+        $program->save();
+
+        return redirect('Trainer/Programs')->with('success','Program added successfully');
     }
 
     /**
