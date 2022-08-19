@@ -46,7 +46,9 @@ class BookingsController extends Controller
         ->where('sessions.Status','Pending')
         ->get();
 
-        return view('bookings', compact('bookings'));
+        $bookingscount = count($bookings);
+
+        return view('bookings', compact('bookings','bookingscount'));
     }
 
     public function approvebooking(Request $request,Sessions $id)

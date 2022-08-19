@@ -37,7 +37,11 @@ class SessionsController extends Controller
         ->where('sessions.Attendance','Present')
         ->get();
 
-        return view('index', compact('bookings','present_sessions'));
+        $programs = Programs::join('trainers','programs.TrainerId','=','trainers.id')
+        ->select('trainers.id As trainerId','trainers.Name As trainer','programs.Name As program','programs.Day','programs.Duration','programs.Price')
+        ->paginate(3);
+
+        return view('index', compact('bookings','present_sessions','programs'));
     }
 
     public function booksession()

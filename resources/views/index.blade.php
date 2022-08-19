@@ -57,49 +57,29 @@
                     </div>
                 </div>
 
-                <!------------------------------------ Sidebar for active sessions ------------------------------>
+                <!------------------------------------ Sidebar for programs ------------------------------>
 
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Programs</h4>
                             <h6 class="card-subtitle">Top Gym programs</h6>
-                            <div class="mt-5 pb-3 d-flex align-items-center">
-                                <span class="btn btn-primary btn-circle d-flex align-items-center">
-                                    <i class="mdi mdi-cart-outline fs-4" ></i>
-                                </span>
-                                <div class="ms-3">
-                                    <h5 class="mb-0 fw-bold">Cardio</h5>
-                                    <span class="text-muted fs-6">Johnathan Doe</span>
-                                </div>
-                                <div class="ms-auto">
-                                    <span class="badge bg-light text-muted">50 minutes</span>
-                                </div>
-                            </div>
-                            <div class="py-3 d-flex align-items-center">
-                                <span class="btn btn-warning btn-circle d-flex align-items-center">
-                                    <i class="mdi mdi-star-circle fs-4" ></i>
-                                </span>
-                                <div class="ms-3">
-                                    <h5 class="mb-0 fw-bold">Fat Loss</h5>
-                                    <span class="text-muted fs-6">Mary allen</span>
-                                </div>
-                                <div class="ms-auto">
-                                    <span class="badge bg-light text-muted">42 minutes</span>
-                                </div>
-                            </div>
-                            <div class="py-3 d-flex align-items-center">
-                                <span class="btn btn-warning btn-circle d-flex align-items-center">
-                                    <i class="mdi mdi-star-circle fs-4" ></i>
-                                </span>
-                                <div class="ms-3">
-                                    <h5 class="mb-0 fw-bold">Zumba</h5>
-                                    <span class="text-muted fs-6">Barry Kamau</span>
-                                </div>
-                                <div class="ms-auto">
-                                    <span class="badge bg-light text-muted">65 minutes</span>
-                                </div>
-                            </div>
+                                @foreach ($programs as $program)
+                                    <div class="mt-5  d-flex align-items-center">
+                                        <span class="btn btn-primary btn-circle d-flex align-items-center">
+                                            <i class="mdi mdi-dumbbell fs-4" ></i>
+                                        </span>
+                                        <div class="ms-3">
+                                            <h5 class="mb-0 fw-bold">{{ $program->program }}</h5>
+                                            <span class="text-muted fs-6">{{ $program->trainer }}</span>
+                                            <p class="fs-5">Kshs {{ $program->Price }}</p>
+                                        </div>
+                                        <div class="ms-auto">
+                                            <span class="badge bg-light text-muted">{{ $program->Duration }} minutes</span>
+                                        </div>
+                                    </div>
+                                @endforeach
+
 
                         </div>
                     </div>
@@ -148,7 +128,7 @@
                                         <td>{{ $session->Date }}</td>
                                         <td>{{ $session->Duration }}</td>
                                     </tr>
-                                    
+
                                     @endforeach
 
 
