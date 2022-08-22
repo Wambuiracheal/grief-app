@@ -10,12 +10,11 @@ This project entails a gym management system that enables users to manage their 
 
 ## FEATURES
 
-* Deleting Property
-* Uploading Property
-* Creating Account
-* Advertise vacancy
-* Reporting
-* Flagging/Banning Property
+* Booking training appointments
+* Approve training requests
+* Enroll in a training program
+* Creation of programs for the gym
+
 
 
 ## INSTALLATION/RUNNING THE APP
