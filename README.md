@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/andymush/Gym-session-system/main/public/assets/images/logo-light-icon.png" width="400">
+    <img src="https://github.com/andymush/Gym-session-system/blob/main/public/assets/images/top.png" width="400">
     </a>
 </p>
 
