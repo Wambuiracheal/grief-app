@@ -17,6 +17,49 @@
                 </div>
             </div>
 
+            {{-- <div class="row justify-content-center m-3 p-3 ">
+
+                <div class="col-md-6 col-lg-3">
+                    <button class="btn btn-outline-success" id="approved">
+                        <div class="mb-3 widget-chart widget-chart2 text-left ">
+                            <div class="widget-content">
+                                <div class="widget-content-outer" >
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left p-4 fsize-1">
+                                            <div class="widget-numbers mt-0 fsize-3"><strong>Approved </strong></div>
+                                        </div>
+                                    </div>
+                                    <div class="widget-content-left fsize-1">
+                                        <div class="text-muted opacity-6">Icon</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <button class="btn btn-outline-warning" id="pending">
+                        <div class="mb-3 widget-chart widget-chart2 text-left ">
+                            <div class="widget-content">
+                                <div class="widget-content-outer">
+                                    <div class="widget-content-wrapper">
+                                        <div class="widget-content-left p-4 fsize-1">
+                                            <div class="widget-numbers mt-0 fsize-3"><strong>Pending</strong></div>
+                                        </div>
+                                    </div>
+                                    <div class="widget-content-left fsize-1">
+                                        <div class="text-muted opacity-6">Icon</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+
+
+            </div> --}}
+
             <div class="container-fluid">
                 <div class="mt-1 row">
                     <div class="col-12">
@@ -41,7 +84,7 @@
                                     <tbody>
                                         @foreach ($bookings as $booking)
                                             <tr>
-                                                <th scope="row">{{ $booking->id }}</th>
+                                                <th scope="row">{{ $loop->iteration }}</th>
                                                 <td>{{ $booking->session}}</td>
                                                 <td>{{ $booking->client }}</td>
                                                 <td>{{ $booking->Date }}</td>

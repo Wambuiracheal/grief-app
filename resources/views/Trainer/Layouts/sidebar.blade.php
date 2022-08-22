@@ -22,6 +22,12 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('trainer.Sessions') }}" aria-expanded="false">
+                        <i class="mdi mdi-border-all"></i>
+                        <span class="hide-menu">Sessions</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('trainer.Programs') }}" aria-expanded="false">
                         <i class="mdi mdi-face"></i>
                         <span class="hide-menu">Programs</span>

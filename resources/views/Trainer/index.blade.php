@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-6">
                     <div class="text-end upgrade-btn">
-                        <a href="/create-session" class="btn btn-primary text-white" >Create Session</a>
+                        <a href="/Trainer/Bookings" class="btn btn-primary text-white" >Bookings</a>
                     </div>
                 </div>
             </div>
@@ -139,12 +139,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Zumba</td>
-                                        <td>John Doe</td>
-                                        <td>20th June, 2001</td>
-                                        <td>40</td>
-                                    </tr>
+                                    @foreach ($sessions as $session)
+
+                                        <tr>
+                                            <td>{{ $session->session }}</td>
+                                            <td>{{ $session->client }}</td>
+                                            <td>{{ $session->Date }}</td>
+                                            <td>{{ $session->Duration }}</td>
+                                        </tr>
+                                    @endforeach
+
 
                                 </tbody>
                             </table>

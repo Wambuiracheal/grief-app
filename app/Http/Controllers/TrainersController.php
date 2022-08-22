@@ -28,7 +28,15 @@ class TrainersController extends Controller
         ->take(3)
         ->get();
 
-        return view('Trainer/index', compact('bookings'));
+        $sessions = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
+        ->join('clients','sessions.ClientId','=','clients.id')
+        ->select('trainers.Name as trainer','sessions.ClientId as clientId','clients.Name as client','sessions.id','sessions.Name as session','sessions.Duration','sessions.Date','sessions.Status','sessions.Attendance')
+        ->where('TrainerId',$get_trainer_id->id)
+        ->where('sessions.Status','Approved')
+        ->orderby('sessions.created_at','desc')
+        ->paginate(5);
+
+        return view('Trainer/index', compact('bookings','sessions'));
 
     }
 

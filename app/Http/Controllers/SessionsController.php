@@ -9,6 +9,8 @@ use App\Models\Sessions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Programs;
+use App\Models\Trainers;
 
 class SessionsController extends Controller
 {
@@ -35,7 +37,24 @@ class SessionsController extends Controller
         ->where('sessions.Attendance','Present')
         ->get();
 
-        return view('index', compact('bookings','present_sessions'));
+        $programs = Programs::join('trainers','programs.TrainerId','=','trainers.id')
+        ->select('trainers.id As trainerId','trainers.Name As trainer','programs.Name As program','programs.Day','programs.Duration','programs.Price')
+        ->paginate(3);
+
+        return view('index', compact('bookings','present_sessions','programs'));
+    }
+
+    public function booksession()
+    {
+        $programs = Programs::join('trainers','programs.TrainerId','=','trainers.id')
+        ->select('trainers.id As trainerId','trainers.Name As trainer','programs.Name As program','programs.Day','programs.Duration','programs.Price')
+        ->get();
+
+        $get_client_id = Clients::select('id')
+        ->where('UserId',Auth::user()->id)
+        ->first();
+
+        return view('/book-session', compact('programs','get_client_id'));
     }
 
     public function sessions()
@@ -50,6 +69,33 @@ class SessionsController extends Controller
         ->get();
 
         return view('sessions', compact('Allsessions'));
+    }
+
+    public function approvedsessions()
+    {
+        $get_trainer_id = Trainers::select('id')
+        ->where('UserId',Auth::user()->id)
+        ->first();
+
+        $Allsessions = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
+        ->join('clients','sessions.ClientId','=','clients.id')
+        ->select('trainers.Name as trainer','sessions.ClientId as clientId','clients.Name as client','sessions.id','sessions.Name as session','sessions.Duration','sessions.Date','sessions.Status','sessions.Attendance')
+        ->where('TrainerId',$get_trainer_id->id)
+        ->where('sessions.Status','Approved')
+        ->get();
+
+        return view('Trainer/Sessions', compact('Allsessions'));
+
+    }
+
+    public function mark_attendance(Request $request, Sessions $id)
+    {
+        $unit = Sessions::where('id',$id->id)
+        ->update([
+            'Attendance'=>$request->Attendance
+        ]);
+
+        return redirect()->back()->with('success','Attendance Updated');
     }
 
     /**
