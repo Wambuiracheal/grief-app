@@ -293,6 +293,28 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-group position-relative">
+                                                    <span class="zmdi zmdi-account"></span>
+                                                    <input id="phone" type="text" class="form-control @error('name') is-invalid @enderror" name="phone" required  autofocus placeholder="Phone number">
+                                                </div>
+                                                @error('name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group position-relative">
+                                                    <span class="zmdi zmdi-account"></span>
+                                                    <input id="workoutplan" type="text" class="form-control @error('name') is-invalid @enderror" name="workoutplan" autofocus placeholder="Workout plan e.g Cardio, Weight lifting">
+                                                </div>
+                                                @error('name')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group position-relative">
                                                     <span class="zmdi zmdi-key"></span>
                                                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password">
                                                 </div>
@@ -309,7 +331,7 @@
                                                 </div>
 
                                             </div>
-                                            
+
                                             <div class="col-12 mt-30">
                                                 <button type="submit" id="submit" class="btn btn-lg btn-custom btn-dark btn-block">Sign Up
                                                 </button>
