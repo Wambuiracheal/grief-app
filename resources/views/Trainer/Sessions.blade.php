@@ -50,15 +50,22 @@
                                                     <button class="btn btn-outline-primary" disabled><i class="m-r-10 mdi mdi-thumb-up"></i>{{ $session->Status }}
                                                 </td>
                                                 <td>
-                                                    <form action="/Trainer/Sessions/{{ $session->id }}" method="POST"  >
+                                                    <form action="{{route('mark.attendance', $session->id )}}" method="POST"  >
                                                         @csrf
-                                                        @if ($session->Attendance == 'Present')
-                                                            <button value="Present" name="Attendance" id="Attendance" type="submit" class="btn btn-outline-primary " disabled>
+                                                        @if ($session->Attendance !== 'Present')
+                                                            {{-- <button value="Present" name="Attendance" id="Attendance" type="submit" class="btn btn-outline-primary " disabled>
                                                                 <i class="m-r-10 mdi mdi-human-handsup"></i>{{ $session->Attendance }}
-                                                            </button>&nbsp;
-                                                        @else
+                                                            </button>&nbsp; --}}
                                                             <button value="Present" name="Attendance" id="Attendance" type="submit" class="btn btn-danger">
                                                                 <i class="m-r-10 mdi mdi-account-minus"></i>{{ $session->Attendance }}
+                                                            </button>&nbsp;
+
+                                                        @else
+                                                            {{-- <button value="Absent" name="Attendance" id="Attendance" type="submit" class="btn btn-danger">
+                                                                <i class="m-r-10 mdi mdi-account-minus"></i>{{ $session->Attendance }}
+                                                            </button>&nbsp; --}}
+                                                            <button value="Absent" name="Attendance" id="Attendance" type="submit" class="btn btn-outline-primary " >
+                                                                <i class="m-r-10 mdi mdi-human-handsup"></i>{{ $session->Attendance }}
                                                             </button>&nbsp;
                                                         @endif
                                                     </form>

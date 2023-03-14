@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProgramsRequest;
 use App\Http\Requests\UpdateProgramsRequest;
 use App\Models\Programs;
 use App\Models\Clients;
+use App\Models\Sessions;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -21,7 +22,7 @@ class ProgramsController extends Controller
     public function index()
     {
         $programs = Programs::join('trainers','programs.TrainerId','=','trainers.id')
-        ->select('trainers.id As trainerId','trainers.Name As trainer','programs.Name As program','programs.Day','programs.Duration','programs.Price')
+        ->select('trainers.id As trainerId','trainers.Name As trainer','programs.id','programs.Name As program','programs.Day','programs.Duration','programs.Price')
         ->get();
 
         $get_trainer_id = Trainers::select('id')
@@ -78,9 +79,25 @@ class ProgramsController extends Controller
      * @param  \App\Models\Programs  $programs
      * @return \Illuminate\Http\Response
      */
-    public function show(Programs $programs)
+    public function show($id)
     {
-        //
+        Log::info($id);
+
+        $clients = Sessions::join('clients','sessions.ClientId','=','clients.id')
+        ->join('programs','sessions.ProgramId','=','programs.id')
+        ->select('clients.Name as Name','sessions.Duration','sessions.Date','programs.Name as program','programs.id')
+        ->where('programs.id',$id)
+        ->where('sessions.Attendance','Present')        
+        ->get();
+
+        $program = Programs::find($id)
+        ->join('trainers','programs.TrainerId','=','trainers.id')
+        ->select('programs.id','programs.Name As name','programs.Day','programs.Duration','programs.Price')
+        ->where('programs.id',$id)
+        ->limit(1)
+        ->first();
+
+        return view('Trainer.show_program', compact('program', 'clients'));
     }
 
     /**

@@ -24,7 +24,8 @@ class BookingsController extends Controller
 
         $bookings = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
         ->join('clients','sessions.ClientId','clients.id')
-        ->select('trainers.Name as trainer','clients.Name as client','sessions.Status','sessions.id as id','sessions.ClientId as clientid','sessions.Name as session','sessions.Duration','sessions.Date')
+        ->join('programs','sessions.ProgramId','=','programs.id')
+        ->select('trainers.Name as trainer','clients.Name as client','sessions.Status','sessions.id as id','sessions.ClientId as clientid','programs.Name as session','sessions.Duration','sessions.Date')
         ->where('ClientId',$get_trainer_id->id)
         ->take(3)
         ->get();
@@ -41,7 +42,8 @@ class BookingsController extends Controller
         ->first();
 
         $bookings = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
-        ->select('trainers.Name as trainer','sessions.ClientId as client','sessions.Name as session','sessions.Duration','sessions.Date','sessions.Status')
+        ->join('programs','sessions.ProgramId','=','programs.id')
+        ->select('trainers.Name as trainer','sessions.ClientId as client','programs.Name as session','sessions.Duration','sessions.Date','sessions.Status')
         ->where('ClientId',$get_client_id->id)
         ->where('sessions.Status','Pending')
         ->get();

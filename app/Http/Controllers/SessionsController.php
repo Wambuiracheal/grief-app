@@ -26,15 +26,17 @@ class SessionsController extends Controller
         ->first();
 
         $bookings = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
-        ->select('trainers.Name as trainer','sessions.ClientId as client','sessions.Name as session','sessions.Duration','sessions.Date')
+        ->join('programs','sessions.ProgramId','=','programs.id')
+        ->select('trainers.Name as trainer','sessions.ClientId as client','programs.Name as session','sessions.Duration','sessions.Date')
         ->where('ClientId',$get_client_id->id)
         ->where('sessions.Status','Approved')
         ->paginate(3);
 
         $present_sessions = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
-        ->select('trainers.Name as trainer','sessions.ClientId as client','sessions.Name as session','sessions.Duration','sessions.Date')
+        ->join('programs','sessions.ProgramId','=','programs.id')
+        ->select('trainers.Name as trainer','sessions.ClientId as client','programs.Name as session','sessions.Attendance','sessions.Duration','sessions.Date')
         ->where('ClientId',$get_client_id->id)
-        ->where('sessions.Attendance','Present')
+        ->where('sessions.Status','Present')
         ->get();
 
         $programs = Programs::join('trainers','programs.TrainerId','=','trainers.id')
@@ -47,7 +49,7 @@ class SessionsController extends Controller
     public function booksession()
     {
         $programs = Programs::join('trainers','programs.TrainerId','=','trainers.id')
-        ->select('trainers.id As trainerId','trainers.Name As trainer','programs.Name As program','programs.Day','programs.Duration','programs.Price')
+        ->select('trainers.id As trainerId','trainers.Name As trainer','programs.id','programs.Name As program','programs.Day','programs.Duration','programs.Price')
         ->get();
 
         $get_client_id = Clients::select('id')
@@ -64,7 +66,8 @@ class SessionsController extends Controller
         ->first();
 
         $Allsessions = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
-        ->select('trainers.Name as trainer','sessions.ClientId as client','sessions.Name as session','sessions.Duration','sessions.Date','sessions.Status','sessions.Attendance')
+        ->join('programs','sessions.ProgramId','=','programs.id')
+        ->select('trainers.Name as trainer','sessions.ClientId as client','programs.Name as session','sessions.Duration','sessions.Date','sessions.Status','sessions.Attendance')
         ->where('ClientId',$get_client_id->id)
         ->get();
 
@@ -79,8 +82,9 @@ class SessionsController extends Controller
 
         $Allsessions = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
         ->join('clients','sessions.ClientId','=','clients.id')
-        ->select('trainers.Name as trainer','sessions.ClientId as clientId','clients.Name as client','sessions.id','sessions.Name as session','sessions.Duration','sessions.Date','sessions.Status','sessions.Attendance')
-        ->where('TrainerId',$get_trainer_id->id)
+        ->join('programs','sessions.ProgramId','=','programs.id')
+        ->select('trainers.Name as trainer','sessions.ClientId as clientId','clients.Name as client','sessions.id','programs.Name as session','sessions.Duration','sessions.Date','sessions.Status','sessions.Attendance')
+        ->where('sessions.TrainerId',$get_trainer_id->id)
         ->where('sessions.Status','Approved')
         ->get();
 
@@ -90,7 +94,8 @@ class SessionsController extends Controller
 
     public function mark_attendance(Request $request, Sessions $id)
     {
-        $unit = Sessions::where('id',$id->id)
+       
+        $session = Sessions::where('id',$id->id)
         ->update([
             'Attendance'=>$request->Attendance
         ]);
@@ -116,8 +121,9 @@ class SessionsController extends Controller
      */
     public function store(Request $request)
     {
+        Log::info($request);
         $this->validate($request,[
-            'SessionName' => 'required',
+            'Program' => 'required',
             'Trainer' => 'required',
             'Date' => 'required',
             'Duration' => 'required',
@@ -127,7 +133,7 @@ class SessionsController extends Controller
         $session = new Sessions;
 
         $session->ClientId=$request->input('ClientId');
-        $session->Name=$request->input('SessionName');
+        $session->ProgramId=$request->input('Program');
         $session->TrainerId=$request->input('Trainer');
         $session->Date=$request->input('Date');
         $session->Duration=$request->input('Duration');

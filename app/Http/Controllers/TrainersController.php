@@ -23,16 +23,19 @@ class TrainersController extends Controller
 
         $bookings = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
         ->join('clients','sessions.ClientId','clients.id')
-        ->select('trainers.Name as trainer','clients.Name as client','sessions.ClientId as clientid','sessions.Name as session','sessions.Duration','sessions.Date')
+        ->join('programs','sessions.ProgramId','=','programs.id')
+        ->select('trainers.Name as trainer','clients.Name as client','sessions.ClientId as clientid','programs.Name as session','sessions.Duration','sessions.Date')
         ->where('ClientId',$get_trainer_id->id)
+        ->where('sessions.Status','Pending')
         ->take(3)
         ->get();
 
         $sessions = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
         ->join('clients','sessions.ClientId','=','clients.id')
-        ->select('trainers.Name as trainer','sessions.ClientId as clientId','clients.Name as client','sessions.id','sessions.Name as session','sessions.Duration','sessions.Date','sessions.Status','sessions.Attendance')
+        ->select('trainers.Name as trainer','sessions.ClientId as clientId','clients.Name as client','sessions.id','programs.Name as session','sessions.Duration','sessions.Date','sessions.Status','sessions.Attendance')
         ->where('TrainerId',$get_trainer_id->id)
         ->where('sessions.Status','Approved')
+        ->where('sessions.Attendance','Present')
         ->orderby('sessions.created_at','desc')
         ->paginate(5);
 

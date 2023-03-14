@@ -29,11 +29,11 @@
                                 <div class="row p-2 mb-4">
                                     <div class="col-md-4">
                                         <div class="mb-0 p-2">
-                                            <label for="SessionName" class="form-label">Session</label>
-                                            <Select name="SessionName" type="text"  class="form-select" id="SessionName " aria-describedby="SessionName " required>
+                                            <label for="Program" class="form-label">Session</label>
+                                            <Select name="Program" type="text"  class="form-select" id="Program " aria-describedby="Program " required>
                                                 <option value=""> Choose Program</option>
                                                 @foreach ($programs as $program)
-                                                    <option value="{{ $program->program }}">{{ $program->program }}</option>
+                                                    <option value="{{ $program->id }}">{{ $program->program }}</option>
                                                 @endforeach
                                             </Select>
                                         </div>

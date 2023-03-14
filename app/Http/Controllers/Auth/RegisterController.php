@@ -73,21 +73,7 @@ class RegisterController extends Controller
             'type' => '0'
         ]);
 
-        // if ($user->type == 'trainer')
-        // {
-        //     Trainers::create([
-        //         'UserId' => $user->id,
-        //         'Name' => $user->name
-        //     ]);
-        // }
-        // elseif ($user->type == 'client')
-        // {
-        //     Clients::create([
-        //         'UserId' => $user->id,
-        //         'Name' => $user->name
-        //     ]);
-        // }
-
+       
         $clients = Clients::create([
             'UserId' => $user->id,
             'Name' => $user->name,
