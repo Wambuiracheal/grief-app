@@ -27,6 +27,7 @@ class BookingsController extends Controller
         ->join('programs','sessions.ProgramId','=','programs.id')
         ->select('trainers.Name as trainer','clients.Name as client','sessions.Status','sessions.id as id','sessions.ClientId as clientid','sessions.ProgramId','programs.Name as session','sessions.Duration','sessions.Date')
         ->where('trainers.id',$get_trainer_id->id)
+        ->where('sessions.Status','Pending')
         ->orderby('sessions.created_at','DESC')
         //->take(3)
         ->get();

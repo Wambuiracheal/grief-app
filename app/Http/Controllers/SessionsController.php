@@ -142,7 +142,7 @@ class SessionsController extends Controller
         //Log::info($session);
         $session->save();
 
-        return redirect('index')->with('success','Session booked successfully');
+        return redirect('bookings')->with('success','Session booked successfully');
     }
 
     /**

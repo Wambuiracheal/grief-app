@@ -14,7 +14,7 @@
                             <li class="breadcrumb-item active" aria-current="page">{{$program->name}}</li>
                         </ol>
                     </nav>
-                    <h1 class="mb-0 fw-bold">Dashboard</h1>
+                    <h1 class="mb-0 fw-bold">Program info</h1>
                 </div>
                 
             </div>
@@ -66,7 +66,7 @@
                                         <th class="border-top-0">Name</th>
                                         <th class="border-top-0">Date</th>
                                         <th class="border-top-0">Duration (Min)</th>
-
+                                        <th class="border-top-0">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
