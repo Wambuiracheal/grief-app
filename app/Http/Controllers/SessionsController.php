@@ -83,7 +83,8 @@ class SessionsController extends Controller
         $Allsessions = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
         ->join('clients','sessions.ClientId','=','clients.id')
         ->join('programs','sessions.ProgramId','=','programs.id')
-        ->select('trainers.Name as trainer','sessions.ClientId as clientId','clients.Name as client','sessions.id','programs.Name as session','sessions.Duration','sessions.Date','sessions.Status','sessions.Attendance')
+        ->select('trainers.Name as trainer','sessions.ClientId as clientId','clients.Name as client','sessions.id','programs.Name as session','sessions.Duration','sessions.Date','sessions.Status',
+        'sessions.ProgramId','sessions.Attendance')
         ->where('sessions.TrainerId',$get_trainer_id->id)
         ->where('sessions.Status','Approved')
         ->get();

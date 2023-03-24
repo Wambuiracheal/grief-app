@@ -83,11 +83,18 @@ class ProgramsController extends Controller
     {
         Log::info($id);
 
-        $clients = Sessions::join('clients','sessions.ClientId','=','clients.id')
+        $approved = Sessions::join('clients','sessions.ClientId','=','clients.id')
         ->join('programs','sessions.ProgramId','=','programs.id')
-        ->select('clients.Name as Name','sessions.Duration','sessions.Date','programs.Name as program','programs.id')
+        ->select('clients.Name as Name','sessions.Duration','sessions.Date','programs.Name as program','programs.id','sessions.Status','sessions.Attendance')
         ->where('programs.id',$id)
-        ->where('sessions.Attendance','Present')        
+        ->where('sessions.Status','Approved')        
+        ->get();
+
+        $pending = Sessions::join('clients','sessions.ClientId','=','clients.id')
+        ->join('programs','sessions.ProgramId','=','programs.id')
+        ->select('clients.Name as Name','sessions.Duration','sessions.Date','programs.Name as program','programs.id','sessions.Status','sessions.Attendance')
+        ->where('programs.id',$id)
+        ->where('sessions.Status','Pending')        
         ->get();
 
         $program = Programs::find($id)
@@ -97,7 +104,7 @@ class ProgramsController extends Controller
         ->limit(1)
         ->first();
 
-        return view('Trainer.show_program', compact('program', 'clients'));
+        return view('Trainer.show_program', compact('program', 'approved','pending'));
     }
 
     /**

@@ -42,7 +42,7 @@
                                         @foreach ($Allsessions as $session)
                                             <tr>
                                                 <th scope="row">{{ $loop->iteration }}</th>
-                                                <td>{{ $session->session }}</td>
+                                                <td><a href="{{ route('show.program',$session->ProgramId)}}" >{{$session->session}}</a></td>
                                                 <td>{{ $session->client }}</td>
                                                 <td>{{ $session->Date }}</td>
                                                 <td>{{ $session->Duration }}</td>

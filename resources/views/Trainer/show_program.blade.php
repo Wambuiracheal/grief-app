@@ -27,11 +27,40 @@
                             <div>
                                 <h4 class="card-title">{{$program->name}} Sessions</h4>
                                 <h5 class="card-subtitle">Overview of clients sessions</h5>
-                            </div>                           
+                            </div>            
                         </div>
+                        <div class="text-center my-3">
+                            <button class="btn btn-primary" id="viewapproved">Approved</button><button class="btn btn-warning" id="viewpending">Pending</button>    
+                        </div> 
                         <!-- title -->
                         <div class="table-responsive">
-                            <table class="table mb-0 table-hover align-middle text-nowrap">
+                            <table class="table mb-0 table-hover align-middle text-nowrap"  id="approved">
+                                
+                                <thead>
+                                    <br>
+                                    <tr>
+                                        <th class="border-top-0">Name</th>
+                                        <th class="border-top-0">Date</th>
+                                        <th class="border-top-0">Duration (Min)</th>
+                                        <th class="border-top-0">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($approved as $clients)
+
+                                    <tr>
+                                        <td>{{ $clients->Name }}</td>
+                                        <td>{{ $clients->Date }}</td>
+                                        <td>{{ $clients->Duration }}</td>
+                                        <td>
+                                            <button class="btn btn-outline-primary" disabled><i class="m-r-10 mdi mdi-clock"></i>{{ $clients->Status }}
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>                               
+                            </table>
+                            
+                            <table class="table mb-0 table-hover align-middle text-nowrap" style="display:none;" id="pending">
                                 <thead>
                                     <tr>
                                         <th class="border-top-0">Name</th>
@@ -41,18 +70,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($clients as $clients)
+                                    @foreach ($pending as $clients)
 
                                     <tr>
                                         <td>{{ $clients->Name }}</td>
                                         <td>{{ $clients->Date }}</td>
                                         <td>{{ $clients->Duration }}</td>
+                                        <td>
+                                            <button class="btn btn-outline-warning" disabled><i class="m-r-10 mdi mdi-clock"></i>{{ $clients->Status }}
+                                        </td>
                                     </tr>
-
                                     @endforeach
-
-
-                                </tbody>
+                                </tbody>                               
                             </table>
                         </div>
                     </div>
@@ -62,6 +91,21 @@
 
 
     </div>
+
+    <script>
+        $('#viewapproved').click(function(){
+            $("#approved").toggle();
+            $("#pending").hide();
+
+        });
+
+        $('#viewpending').click(function(){
+            $("#pending").toggle();
+            $("#approved").hide();
+
+        });
+    
+    </script>
 
 
 @include('Trainer/Layouts.footer')

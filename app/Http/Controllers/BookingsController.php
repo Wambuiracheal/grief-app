@@ -25,9 +25,10 @@ class BookingsController extends Controller
         $bookings = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
         ->join('clients','sessions.ClientId','clients.id')
         ->join('programs','sessions.ProgramId','=','programs.id')
-        ->select('trainers.Name as trainer','clients.Name as client','sessions.Status','sessions.id as id','sessions.ClientId as clientid','programs.Name as session','sessions.Duration','sessions.Date')
-        ->where('ClientId',$get_trainer_id->id)
-        ->take(3)
+        ->select('trainers.Name as trainer','clients.Name as client','sessions.Status','sessions.id as id','sessions.ClientId as clientid','sessions.ProgramId','programs.Name as session','sessions.Duration','sessions.Date')
+        ->where('trainers.id',$get_trainer_id->id)
+        ->orderby('sessions.created_at','DESC')
+        //->take(3)
         ->get();
 
         $booking_status = Sessions::select('Status')->get();
