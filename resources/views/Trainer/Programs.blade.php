@@ -111,8 +111,13 @@
                                                 <td>{{ $program->Duration }} min</td>
                                                 <td>Kshs {{ $program->Price }}</td>
                                                 <td>
+                                                    <form method="POST" action="{{ route('delete.program',$program->id) }}">
+                                                        @csrf
+                                                        @method('delete')
                                                     <a href="{{ route('show.program',$program->id)}}" class="btn btn-success"><i class="bi bi-eye"></i></a> &nbsp; 
-                                                    <a href="{{ route('delete.program',$program->id)}}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+
+                                                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                                    </form>
                                                 </td>
                                                 
                                             </tr>

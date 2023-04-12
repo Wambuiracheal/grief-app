@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTrainersRequest;
 use App\Http\Requests\UpdateTrainersRequest;
+use App\Models\Clients;
 use App\Models\Trainers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Sessions;
+use Illuminate\Support\Facades\Log;
 
 class TrainersController extends Controller
 {
@@ -50,12 +52,27 @@ class TrainersController extends Controller
         ->where('UserId',Auth::user()->id)
         ->first();
 
-        //$profile = Trainers::select('Name')->where('id',$get_trainer_id)->get();
+        $traininghours = Sessions::select('sessions.Duration')
+        ->where('sessions.TrainerId',$get_trainer_id->id)
+        ->where('sessions.Status','Approved')
+        ->where('sessions.Attendance','Present')
+        ->sum('sessions.Duration');
+
+        // $trainerclients = Sessions::select('sessions.ClientId')
+        // ->where('sessions.TrainerId',$get_trainer_id->id)
+        // //->distinct()
+        // ->count();
+
+        // $trainerclients = Clients::join('sessions','clients.id','=','sessions.ClientId')
+        // ->select('clients.id')->where('sessions.TrainerId',$get_trainer_id->id)->count();
+
+        //Log::info($traininghours);
+        //Log::info($trainerclients);
 
         $profile = Trainers::where('UserId',Auth::user()->id)->first();
 
 
-        return view('Trainer/Profile', compact('profile'));
+        return view('Trainer/Profile', compact('profile','traininghours'));
 
     }
 

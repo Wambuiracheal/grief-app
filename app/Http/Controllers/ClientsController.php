@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Clients;
+use App\Models\Sessions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Trainers;
 
 class ClientsController extends Controller
 {
@@ -60,9 +62,22 @@ class ClientsController extends Controller
      * @param  \App\Models\Clients  $clients
      * @return \Illuminate\Http\Response
      */
-    public function show(Clients $clients)
+    public function showrecords($id)
     {
-        //
+        $client = Clients::select('Name')
+        ->where('id',$id)
+        ->first();
+
+        $clientrecords = Sessions::join('clients','sessions.ClientId','clients.id')
+        ->join('programs','sessions.ProgramId','programs.id')
+        ->select('sessions.ClientId as clientId','clients.Name as client','sessions.id','programs.Name as session','sessions.Duration','sessions.Date','sessions.Status','sessions.Attendance','sessions.ProgramId')
+        ->where('sessions.ClientId',$id)
+        // ->where('sessions.Status','Approved')
+        // ->where('sessions.Attendance','Present')
+        ->orderby('sessions.created_at','desc')
+        ->get();
+
+        return view('/Trainer/client-records', compact('clientrecords','client'));
     }
 
     /**

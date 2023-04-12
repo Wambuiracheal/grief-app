@@ -42,15 +42,10 @@
                                                         class="icon-people"></i>
                                                     <font class="font-medium">Training</font>
                                                     <br>
-                                                    <font class="font-medium">254 hrs</font>
+                                                    <font class="font-medium">{{$traininghours}} hrs</font>
 
                                                 </a></div>
-                                            <div class="col-4"><a href="javascript:void(0)" class="link"><i
-                                                        class="icon-picture"></i>
-                                                        <font class="font-medium">Clients</font>
-                                                        <br>
-                                                        <font class="font-medium">5</font>
-                                                </a></div>
+                                            
                                         </div>
                                     </center>
                                 </div>

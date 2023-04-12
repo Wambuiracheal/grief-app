@@ -136,8 +136,10 @@ class ProgramsController extends Controller
      * @param  \App\Models\Programs  $programs
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Programs $programs)
+    public function destroy($id)
     {
-        //
+        $program = Programs::find($id)->delete();
+
+        return redirect()->back();
     }
 }

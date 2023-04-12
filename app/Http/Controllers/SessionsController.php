@@ -87,6 +87,7 @@ class SessionsController extends Controller
         'sessions.ProgramId','sessions.Attendance')
         ->where('sessions.TrainerId',$get_trainer_id->id)
         ->where('sessions.Status','Approved')
+        ->orderby('sessions.created_at','DESC')
         ->get();
 
         return view('Trainer/Sessions', compact('Allsessions'));

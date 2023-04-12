@@ -19,7 +19,7 @@
 
             <div class="row mb-2">
                 <div class="d-grid gap-2 d-md-block">
-                    <button class="btn btn-info text-white" type="button" id="add">Add program</button>
+                    <button class="btn btn-info text-white" type="button" id="add">Add equipment</button>
                 </div>
             </div>
 
@@ -97,6 +97,15 @@
                                                 <td>{{ $equipment->Use }}</td>
                                                 <td>{{ $equipment->Weight }} kg</td>
                                                 <td>Kshs {{ $equipment->Price }}</td>
+                                                <td>
+                                                    <form method="POST" action="{{ route('delete.equipment',$equipment->id) }}">
+                                                        @csrf
+                                                        @method('delete')
+                                                    {{-- <a href="{{ route('show.program',$program->id)}}" class="btn btn-success"><i class="bi bi-eye"></i></a> &nbsp;  --}}
+
+                                                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                                    </form>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

@@ -11,7 +11,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-1 d-flex align-items-center">
                             <li class="breadcrumb-item"><a href="/index" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Programs</li>
+                            <li class="breadcrumb-item active" aria-current="page">Sessions</li>
                         </ol>
                     </nav>
                 </div>
