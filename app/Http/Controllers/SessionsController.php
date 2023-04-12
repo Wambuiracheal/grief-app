@@ -56,7 +56,10 @@ class SessionsController extends Controller
         ->where('UserId',Auth::user()->id)
         ->first();
 
-        return view('/book-session', compact('programs','get_client_id'));
+        $trainers = Trainers::select('id','Name')->get();
+        Log::info($trainers);
+
+        return view('/book-session', compact('programs','get_client_id','trainers'));
     }
 
     public function sessions()

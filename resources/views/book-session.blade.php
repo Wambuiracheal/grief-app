@@ -43,8 +43,8 @@
                                             <label for="Trainer" class="form-label">Trainer</label>
                                             <Select name="Trainer" type="text"  class="form-select" id="Trainer " aria-describedby="Trainer " required>
                                                 <option value=""> Choose Trainer</option>
-                                                @foreach ($programs as $program)
-                                                    <option value="{{ $program->trainerId }}">{{ $program->trainer }}</option>
+                                                @foreach ($trainers as $trainer)
+                                                    <option value="{{ $trainer->id }}">{{ $trainer->Name }}</option>
                                                 @endforeach
                                             </Select>
                                         </div>

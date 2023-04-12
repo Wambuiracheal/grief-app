@@ -27,7 +27,7 @@ class TrainersController extends Controller
         ->join('clients','sessions.ClientId','clients.id')
         ->join('programs','sessions.ProgramId','=','programs.id')
         ->select('trainers.Name as trainer','clients.Name as client','sessions.ClientId as clientid','programs.Name as session','sessions.Duration','sessions.Date')
-        ->where('ClientId',$get_trainer_id->id)
+        ->where('trainers.id',$get_trainer_id->id)
         ->where('sessions.Status','Pending')
         ->take(3)
         ->get();
