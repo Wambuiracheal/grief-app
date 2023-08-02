@@ -11,7 +11,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb mb-1 d-flex align-items-center">
                             <li class="breadcrumb-item"><a href="/index" class="link"><i class="mdi mdi-home-outline fs-4"></i></a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Programs</li>
+                            <li class="breadcrumb-item active" aria-current="page">Sessions</li>
                         </ol>
                     </nav>
                 </div>
@@ -42,7 +42,7 @@
                                         @foreach ($Allsessions as $session)
                                             <tr>
                                                 <th scope="row">{{ $loop->iteration }}</th>
-                                                <td>{{ $session->session }}</td>
+                                                <td><a href="{{ route('show.program',$session->ProgramId)}}" >{{$session->session}}</a></td>
                                                 <td>{{ $session->client }}</td>
                                                 <td>{{ $session->Date }}</td>
                                                 <td>{{ $session->Duration }}</td>
@@ -50,15 +50,22 @@
                                                     <button class="btn btn-outline-primary" disabled><i class="m-r-10 mdi mdi-thumb-up"></i>{{ $session->Status }}
                                                 </td>
                                                 <td>
-                                                    <form action="/Trainer/Sessions/{{ $session->id }}" method="POST"  >
+                                                    <form action="{{route('mark.attendance', $session->id )}}" method="POST"  >
                                                         @csrf
-                                                        @if ($session->Attendance == 'Present')
-                                                            <button value="Present" name="Attendance" id="Attendance" type="submit" class="btn btn-outline-primary " disabled>
+                                                        @if ($session->Attendance !== 'Present')
+                                                            {{-- <button value="Present" name="Attendance" id="Attendance" type="submit" class="btn btn-outline-primary " disabled>
                                                                 <i class="m-r-10 mdi mdi-human-handsup"></i>{{ $session->Attendance }}
-                                                            </button>&nbsp;
-                                                        @else
+                                                            </button>&nbsp; --}}
                                                             <button value="Present" name="Attendance" id="Attendance" type="submit" class="btn btn-danger">
                                                                 <i class="m-r-10 mdi mdi-account-minus"></i>{{ $session->Attendance }}
+                                                            </button>&nbsp;
+
+                                                        @else
+                                                            {{-- <button value="Absent" name="Attendance" id="Attendance" type="submit" class="btn btn-danger">
+                                                                <i class="m-r-10 mdi mdi-account-minus"></i>{{ $session->Attendance }}
+                                                            </button>&nbsp; --}}
+                                                            <button value="Absent" name="Attendance" id="Attendance" type="submit" class="btn btn-outline-primary " >
+                                                                <i class="m-r-10 mdi mdi-human-handsup"></i>{{ $session->Attendance }}
                                                             </button>&nbsp;
                                                         @endif
                                                     </form>

@@ -85,8 +85,8 @@
                                         @foreach ($bookings as $booking)
                                             <tr>
                                                 <th scope="row">{{ $loop->iteration }}</th>
-                                                <td>{{ $booking->session}}</td>
-                                                <td>{{ $booking->client }}</td>
+                                                <td><a href="{{ route('show.program',$booking->ProgramId)}}" >{{$booking->session}}</a></td>
+                                                <td><a href="{{ route('client.records',$booking->clientid)}}" >{{$booking->client }}</a></td>
                                                 <td>{{ $booking->Date }}</td>
                                                 <td>{{ $booking->Duration }}</td>
                                                 <td>

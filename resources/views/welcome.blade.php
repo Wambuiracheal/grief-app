@@ -88,7 +88,7 @@
     <!-- Hero Slider Section Begin -->
     <section class="hero-slider">
         <div class="slide-items owl-carousel">
-            <div class="single-slide set-bg active" data-setbg="/images/bg.jpg">
+            <div class="single-slide set-bg active" data-setbg="/images/bg1.jpg">
 
                 <h1>Be Fit.Top Gym</h1>
                 <a href="#services" class="primary-btn">Read More</a>
@@ -101,6 +101,11 @@
             <div class="single-slide set-bg" data-setbg="/images/bg-3.jpg">
 
                 <h1>Be Fit.Top Body</h1>
+                <a href="#services" class="primary-btn">Read More</a>
+            </div>
+            <div class="single-slide set-bg" data-setbg="/images/bg4.jpg">
+
+                <h1>Be Fit.Together</h1>
                 <a href="#services" class="primary-btn">Read More</a>
             </div>
         </div>

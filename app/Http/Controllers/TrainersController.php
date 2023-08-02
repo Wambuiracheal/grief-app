@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTrainersRequest;
 use App\Http\Requests\UpdateTrainersRequest;
+use App\Models\Clients;
 use App\Models\Trainers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Sessions;
+use Illuminate\Support\Facades\Log;
 
 class TrainersController extends Controller
 {
@@ -23,16 +25,20 @@ class TrainersController extends Controller
 
         $bookings = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
         ->join('clients','sessions.ClientId','clients.id')
-        ->select('trainers.Name as trainer','clients.Name as client','sessions.ClientId as clientid','sessions.Name as session','sessions.Duration','sessions.Date')
-        ->where('ClientId',$get_trainer_id->id)
+        ->join('programs','sessions.ProgramId','=','programs.id')
+        ->select('trainers.Name as trainer','clients.Name as client','sessions.ClientId as clientid','programs.Name as session','sessions.Duration','sessions.Date')
+        ->where('trainers.id',$get_trainer_id->id)
+        ->where('sessions.Status','Pending')
         ->take(3)
         ->get();
 
         $sessions = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
         ->join('clients','sessions.ClientId','=','clients.id')
-        ->select('trainers.Name as trainer','sessions.ClientId as clientId','clients.Name as client','sessions.id','sessions.Name as session','sessions.Duration','sessions.Date','sessions.Status','sessions.Attendance')
-        ->where('TrainerId',$get_trainer_id->id)
+        ->join('programs','sessions.ProgramId','=','programs.id')
+        ->select('trainers.Name as trainer','sessions.ClientId as clientId','clients.Name as client','sessions.id','programs.Name as session','sessions.Duration','sessions.Date','sessions.Status','sessions.Attendance')
+        ->where('sessions.TrainerId',$get_trainer_id->id)
         ->where('sessions.Status','Approved')
+        ->where('sessions.Attendance','Present')
         ->orderby('sessions.created_at','desc')
         ->paginate(5);
 
@@ -46,12 +52,27 @@ class TrainersController extends Controller
         ->where('UserId',Auth::user()->id)
         ->first();
 
-        //$profile = Trainers::select('Name')->where('id',$get_trainer_id)->get();
+        $traininghours = Sessions::select('sessions.Duration')
+        ->where('sessions.TrainerId',$get_trainer_id->id)
+        ->where('sessions.Status','Approved')
+        ->where('sessions.Attendance','Present')
+        ->sum('sessions.Duration');
+
+        // $trainerclients = Sessions::select('sessions.ClientId')
+        // ->where('sessions.TrainerId',$get_trainer_id->id)
+        // //->distinct()
+        // ->count();
+
+        // $trainerclients = Clients::join('sessions','clients.id','=','sessions.ClientId')
+        // ->select('clients.id')->where('sessions.TrainerId',$get_trainer_id->id)->count();
+
+        //Log::info($traininghours);
+        //Log::info($trainerclients);
 
         $profile = Trainers::where('UserId',Auth::user()->id)->first();
 
 
-        return view('Trainer/Profile', compact('profile'));
+        return view('Trainer/Profile', compact('profile','traininghours'));
 
     }
 

@@ -28,7 +28,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Hello Johnny</h4>
+                            <h4 class="card-title">Hello {{Auth::user()->name}}</h4>
                             <h5 class="text-center">Upcoming classes</h5>
                         </div>
                         <div class="comment-widgets scrollable">

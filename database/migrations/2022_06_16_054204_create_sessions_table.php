@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('sessions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('Name',55);
+            //$table->string('Name',55);
+            $table->integer('ProgramId')->unsigned();
+            $table->foreign('ProgramId')->references('id')->on('programs')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('ClientId')->unsigned();
             $table->foreign('ClientId')->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('TrainerId')->unsigned();

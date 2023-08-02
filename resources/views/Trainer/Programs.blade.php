@@ -99,6 +99,7 @@
                                             <th scope="col">Day</th>
                                             <th scope="col">Duration</th>
                                             <th scope="col">Price</th>
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -109,6 +110,16 @@
                                                 <td>{{ $program->Day }}</td>
                                                 <td>{{ $program->Duration }} min</td>
                                                 <td>Kshs {{ $program->Price }}</td>
+                                                <td>
+                                                    <form method="POST" action="{{ route('delete.program',$program->id) }}">
+                                                        @csrf
+                                                        @method('delete')
+                                                    <a href="{{ route('show.program',$program->id)}}" class="btn btn-success"><i class="bi bi-eye"></i></a> &nbsp; 
+
+                                                        <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                                    </form>
+                                                </td>
+                                                
                                             </tr>
                                         @endforeach
 

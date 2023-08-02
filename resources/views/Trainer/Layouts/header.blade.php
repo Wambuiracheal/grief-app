@@ -21,6 +21,7 @@
     <!-- Custom CSS -->
     <link href="/css/style.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -106,7 +107,7 @@
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="/assets/images/users/5.png" alt="user" class="rounded-circle" width="31"> &nbsp;<h5>John Doe</h5>
+                                <img src="/assets/images/users/5.png" alt="user" class="rounded-circle" width="31"> &nbsp;<h5>{{ Auth::user()->name }}</h5>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end user-dd animated" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('trainer.Profile') }}"><i class="ti-user m-r-5 m-l-5"></i>

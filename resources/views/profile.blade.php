@@ -95,7 +95,7 @@
                                         <div class="form-group">
                                             <label for="example-email" class="col-md-12">Email</label>
                                             <div class="col-md-12">
-                                                <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email"
+                                                <input type="email" placeholder="{{ Auth::user()->email }}" class="form-control form-control-line" name="example-email"
                                                     id="example-email" disabled>
                                             </div>
                                         </div>
@@ -108,17 +108,17 @@
                                         <div class="form-group">
                                             <label class="col-md-12">Phone No</label>
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="{{ $profile->Phone }}"
+                                                <input type="text" placeholder="0{{ $profile->Phone }}"
                                                     class="form-control form-control-line">
                                             </div>
                                         </div>
 
 
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <div class="col-sm-12">
                                                 <button class="btn btn-success text-white">Update Profile</button>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </form>
                                 </div>
                             </div>

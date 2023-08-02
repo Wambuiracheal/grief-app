@@ -29,11 +29,11 @@
                                 <div class="row p-2 mb-4">
                                     <div class="col-md-4">
                                         <div class="mb-0 p-2">
-                                            <label for="SessionName" class="form-label">Session</label>
-                                            <Select name="SessionName" type="text"  class="form-select" id="SessionName " aria-describedby="SessionName " required>
+                                            <label for="Program" class="form-label">Session</label>
+                                            <Select name="Program" type="text"  class="form-select" id="Program " aria-describedby="Program " required>
                                                 <option value=""> Choose Program</option>
                                                 @foreach ($programs as $program)
-                                                    <option value="{{ $program->program }}">{{ $program->program }}</option>
+                                                    <option value="{{ $program->id }}">{{ $program->program }}</option>
                                                 @endforeach
                                             </Select>
                                         </div>
@@ -43,8 +43,8 @@
                                             <label for="Trainer" class="form-label">Trainer</label>
                                             <Select name="Trainer" type="text"  class="form-select" id="Trainer " aria-describedby="Trainer " required>
                                                 <option value=""> Choose Trainer</option>
-                                                @foreach ($programs as $program)
-                                                    <option value="{{ $program->trainerId }}">{{ $program->trainer }}</option>
+                                                @foreach ($trainers as $trainer)
+                                                    <option value="{{ $trainer->id }}">{{ $trainer->Name }}</option>
                                                 @endforeach
                                             </Select>
                                         </div>

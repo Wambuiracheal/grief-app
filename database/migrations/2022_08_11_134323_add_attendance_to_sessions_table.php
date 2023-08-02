@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('sessions', function (Blueprint $table) {
-            $table->string('Attendance',50)->default('Present');
+            $table->string('Attendance',50)->default('Absent');
         });
     }
 

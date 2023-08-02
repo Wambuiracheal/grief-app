@@ -31,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/index';
 
     /**
      * Create a new controller instance.
@@ -70,27 +70,15 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'type' => '0'
         ]);
 
-        // if ($user->type == 'trainer')
-        // {
-        //     Trainers::create([
-        //         'UserId' => $user->id,
-        //         'Name' => $user->name
-        //     ]);
-        // }
-        // elseif ($user->type == 'client')
-        // {
-        //     Clients::create([
-        //         'UserId' => $user->id,
-        //         'Name' => $user->name
-        //     ]);
-        // }
-
+       
         $clients = Clients::create([
             'UserId' => $user->id,
             'Name' => $user->name,
-            '' => $user->p
+            'Phone' => $data['phone'],
+            'Workout_plan' => $data['workoutplan'],
         ]);
 
         return $user;

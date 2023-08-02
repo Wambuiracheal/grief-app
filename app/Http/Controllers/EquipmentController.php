@@ -104,8 +104,9 @@ class EquipmentController extends Controller
      * @param  \App\Models\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Equipment $equipment)
+    public function destroy($id)
     {
-        //
+        $equipment = Equipment::find($id)->delete();
+        return redirect()->back();
     }
 }

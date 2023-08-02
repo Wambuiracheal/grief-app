@@ -36,7 +36,7 @@ Route::get('register2', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Route::get('index', function() { return view('index'); })->middleware('auth');
 Route::resource('programs',ProgramsController::class);
@@ -77,9 +77,15 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('Trainer/Equipment', [EquipmentController::class, 'index'])->name('trainer.Equipment');
     Route::post('Trainer/Equipment', [EquipmentController::class, 'store'])->name('create.equipment');
+    Route::delete('Trainer/Equipment/{id}', [EquipmentController::class, 'destroy'])->name('delete.equipment');
+
 
     Route::get('Trainer/Sessions', [SessionsController::class, 'approvedsessions'])->name('trainer.Sessions');
     Route::post('Trainer/Sessions/{id}', [SessionsController::class, 'mark_attendance'])->name('mark.attendance');
+
+    Route::get('Trainer/Programs/{id}', [ProgramsController::class, 'show'])->name('show.program');
+    Route::delete('Trainer/Programs/{id}', [ProgramsController::class, 'destroy'])->name('delete.program');
+    Route::get('Trainer/client-records/{id}', [ClientsController::class, 'showrecords'])->name('client.records');
 
 });
 
