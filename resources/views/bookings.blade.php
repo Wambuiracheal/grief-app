@@ -22,12 +22,12 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Training requests</h4>
-                                <h6 class="card-subtitle">Your previous training requests and rservations</h6>
+                                <h4 class="card-title">Counselling requests</h4>
+                                <h6 class="card-subtitle">Your previous counselling requests and reservations</h6>
                             </div>
                             @if ($bookingscount == 0)
                                 <div class="card-body text-center">
-                                    <h4 class="card-title">all your training requests have been approved</h4>
+                                    <h4 class="card-title">all your counselling requests have been approved</h4>
                                     <a href="/sessions" class="text-white btn btn-info">View them here</a>
                                 </div>
                             @else
@@ -37,7 +37,7 @@
                                             <tr>
                                                 <th scope="col">#</th>
                                                 <th scope="col">Session Name</th>
-                                                <th scope="col">Trainer</th>
+                                                <th scope="col">Counsellor</th>
                                                 <th scope="col">Date</th>
                                                 <th scope="col">Duration</th>
                                                 <th scope="col">Status</th>
@@ -49,7 +49,7 @@
                                                 <tr>
                                                     <td>{{ $loop->iteration }}
                                                     <td>{{ $booking->session }}</td>
-                                                    <td>{{ $booking->trainer }}</td>
+                                                    <td>{{ $booking->counsellor }}</td>
                                                     <td>{{ $booking->Date }}</td>
                                                     <td>{{ $booking->Duration }}</td>
                                                     <td>

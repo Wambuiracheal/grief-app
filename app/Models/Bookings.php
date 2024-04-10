@@ -16,7 +16,7 @@ class Bookings extends Model
     protected $fillable= [
 
         'ClientId',
-        'TrainerId',
+        'CounsellorId',
         'Date',
         'Duration'
 

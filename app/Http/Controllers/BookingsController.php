@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bookings;
 use Illuminate\Http\Request;
-use App\Models\Trainers;
+use App\Models\Counsellors;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Sessions;
 use App\Models\Clients;
@@ -18,15 +18,15 @@ class BookingsController extends Controller
      */
     public function index()
     {
-        $get_trainer_id = Trainers::select('id')
+        $get_Counsellor_id = Counsellors::select('id')
         ->where('UserId',Auth::user()->id)
         ->first();
 
-        $bookings = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
+        $bookings = Sessions::join('counsellors','sessions.CounsellorId','=','counsellors.id')
         ->join('clients','sessions.ClientId','clients.id')
         ->join('programs','sessions.ProgramId','=','programs.id')
-        ->select('trainers.Name as trainer','clients.Name as client','sessions.Status','sessions.id as id','sessions.ClientId as clientid','sessions.ProgramId','programs.Name as session','sessions.Duration','sessions.Date')
-        ->where('trainers.id',$get_trainer_id->id)
+        ->select('counsellors.Name as counsellor','clients.Name as client','sessions.Status','sessions.id as id','sessions.ClientId as clientid','sessions.ProgramId','programs.Name as session','sessions.Duration','sessions.Date')
+        ->where('counsellors.id',$get_Counsellor_id->id)
         ->where('sessions.Status','Pending')
         ->orderby('sessions.created_at','DESC')
         //->take(3)
@@ -34,7 +34,7 @@ class BookingsController extends Controller
 
         $booking_status = Sessions::select('Status')->get();
 
-        return view('Trainer/Bookings', compact('bookings'));
+        return view('Counsellor/Bookings', compact('bookings'));
     }
 
     public function clientbookings()
@@ -43,9 +43,9 @@ class BookingsController extends Controller
         ->where('UserId',Auth::user()->id)
         ->first();
 
-        $bookings = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
+        $bookings = Sessions::join('counsellors','sessions.CounsellorId','=','counsellors.id')
         ->join('programs','sessions.ProgramId','=','programs.id')
-        ->select('trainers.Name as trainer','sessions.ClientId as client','programs.Name as session','sessions.Duration','sessions.Date','sessions.Status')
+        ->select('counsellors.Name as counsellor','sessions.ClientId as client','programs.Name as session','sessions.Duration','sessions.Date','sessions.Status')
         ->where('ClientId',$get_client_id->id)
         ->where('sessions.Status','Pending')
         ->get();
@@ -64,7 +64,7 @@ class BookingsController extends Controller
             'Status'=>$request->Status
         ]);
 
-        return redirect()->back()->with('success','Training session approved');
+        return redirect()->back()->with('success','Counselling session approved');
     }
 
     /**

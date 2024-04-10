@@ -17,10 +17,10 @@ class ProgramsSeeder extends Seeder
     {
         DB::table('programs')->insert([
 
-            'Name' => 'Cardio',
+            'Name' => 'Parent Counselling',
             'Day' => 'Monday',
             'Duration' => '45',
-            'TrainerId' => 1,
+            'CounsellorId' => 1,
             'Price' => '3500',
 
         ]);

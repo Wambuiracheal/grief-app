@@ -24,8 +24,6 @@
         <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css" integrity="sha256-3sPp8BkKUE7QyPSl6VfBByBroQbKxKG7tsusY2mhbVY=" crossorigin="anonymous" />
 
-
-
     </head>
 
     <style>
@@ -151,11 +149,6 @@
                 position: relative;
             }
 
-
-
-
-
-
             .login-box .socials a {
                 -webkit-box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.12);
                 box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.12);
@@ -228,11 +221,6 @@
                 position: relative;
             }
 
-
-
-
-
-
             .login-box .socials a {
                 -webkit-box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.12);
                 box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.12);
@@ -252,8 +240,6 @@
                 -webkit-transition: all 0.3s ease;
                 transition: all 0.3s ease;
             }
-
-
 
     </style>
 

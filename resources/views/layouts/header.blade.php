@@ -11,10 +11,10 @@
     <meta name="description"
         content="Flexy Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Top Gym </title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/Flexy-admin-lite/" />
+    <title>CTG</title>
+    <link rel="canonical" href="https://www.wrappixel.com/templates/Flexy-admin-lite/"/>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/logo.jpg">
     <!-- Custom CSS -->
     <link href="assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <link href="assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css" rel="stylesheet">
@@ -57,17 +57,17 @@
                         <b class="logo-icon">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             <!-- Dark Logo icon -->
-                            <img src="assets/images/logo-icon.png"  class="dark-logo" />
+                            <img src="assets/images/ctg-logo.png"  class="dark-logo" />
                             <!-- Light Logo icon -->
-                            <img src="assets/images/logo-light-icon.png"  class="light-logo" />
+                            <img src="assets/images/logo-lctg-ight.png"  class="light-logo" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="assets/images/top.png"  class="dark-logo" />
+                            <img src="assets/images/counsel.png"  class="dark-logo" />
                             <!-- Light Logo text -->
-                            <img src="assets/images/top.png" class="light-logo"  />
+                            <img src="assets/images/op.png" class="light-logo"  />
                         </span>
                     </a>
                     <!-- ============================================================== -->

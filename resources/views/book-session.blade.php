@@ -40,11 +40,11 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="mb-0 p-2">
-                                            <label for="Trainer" class="form-label">Trainer</label>
-                                            <Select name="Trainer" type="text"  class="form-select" id="Trainer " aria-describedby="Trainer " required>
-                                                <option value=""> Choose Trainer</option>
-                                                @foreach ($trainers as $trainer)
-                                                    <option value="{{ $trainer->id }}">{{ $trainer->Name }}</option>
+                                            <label for="counsellor" class="form-label">Counsellor</label>
+                                            <Select name="Counsellor" type="text"  class="form-select" id="counsellor " aria-describedby="counsellor " required>
+                                                <option value=""> Choose counsellor</option>
+                                                @foreach ($counsellors as $counsellor)
+                                                    <option value="{{ $counsellor->id }}">{{ $counsellor->Name }}</option>
                                                 @endforeach
                                             </Select>
                                         </div>

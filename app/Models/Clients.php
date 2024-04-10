@@ -20,7 +20,7 @@ class Clients extends Model
         'UserId',
         'Name',
         'Phone',
-        'Workout_plan'
+        'type_of_loss'
 
     ];
 }

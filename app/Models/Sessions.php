@@ -17,10 +17,13 @@ class Sessions extends Model
 
     protected $fillable= [
 
-        'Name',
+        'ProgramId',
         'ClientId',
-        'TrainerId',
+        'CounsellorId',
         'Duration',
+        'Status',
+        'Date',
+        'Attendance'
 
     ];
 }

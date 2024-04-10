@@ -6,7 +6,7 @@ use App\Models\Clients;
 use App\Models\Sessions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Trainers;
+use App\Models\Counsellors;
 
 class ClientsController extends Controller
 {
@@ -22,11 +22,9 @@ class ClientsController extends Controller
 
     public function profile()
     {
-        $get_trainer_id = Clients::select('id')
+        $get_counsellor_id = Clients::select('id')
         ->where('UserId',Auth::user()->id)
         ->first();
-
-        //$profile = Trainers::select('Name')->where('id',$get_trainer_id)->get();
 
         $profile = Clients::where('UserId',Auth::user()->id)->first();
 
@@ -77,7 +75,7 @@ class ClientsController extends Controller
         ->orderby('sessions.created_at','desc')
         ->get();
 
-        return view('/Trainer/client-records', compact('clientrecords','client'));
+        return view('/Counsellor/client-records', compact('clientrecords','client'));
     }
 
     /**

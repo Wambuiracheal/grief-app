@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('clients', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             //$table->integer('UserId')->unsigned();
             $table->foreignId('UserId')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('Name');
             $table->integer('Phone')->nullable();
-            $table->string('Workout_plan',100)->nullable();
+            $table->string('type_of_loss',100)->nullable();
             $table->timestamps();
         });
     }

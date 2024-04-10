@@ -22,8 +22,8 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Training sessions</h4>
-                                <h6 class="card-subtitle">All training sessions</h6>
+                                <h4 class="card-title">Counselling sessions</h4>
+                                <h6 class="card-subtitle">All counselling sessions</h6>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-striped">
@@ -31,7 +31,7 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Session Name</th>
-                                            <th scope="col">Trainer</th>
+                                            <th scope="col">Counsellor</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Duration</th>
                                             <th scope="col">Status</th>
@@ -43,7 +43,7 @@
                                             <tr>
                                                 <th scope="row">{{ $loop->iteration }}</th>
                                                 <td>{{ $session->session }}</td>
-                                                <td>{{ $session->trainer }}</td>
+                                                <td>{{ $session->counsellor }}</td>
                                                 <td>{{ $session->Date }}</td>
                                                 <td>{{ $session->Duration }}</td>
                                                 @if ($session->Status == 'Approved')

@@ -29,7 +29,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Hello {{Auth::user()->name}}</h4>
-                            <h5 class="text-center">Upcoming classes</h5>
+                            <h5 class="text-center">Upcoming sessions</h5>
                         </div>
                         <div class="comment-widgets scrollable">
                             <!-- Comment Row -->
@@ -63,7 +63,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Programs</h4>
-                            <h6 class="card-subtitle">Top Gym programs</h6>
+                            <h6 class="card-subtitle">Counselling programs</h6>
                                 @foreach ($programs as $program)
                                     <div class="mt-5  d-flex align-items-center">
                                         <span class="btn btn-primary btn-circle d-flex align-items-center">
@@ -113,14 +113,14 @@
                                 <thead>
                                     <tr>
                                         <th class="border-top-0">Session</th>
-                                        <th class="border-top-0">Trainer</th>
+                                        <th class="border-top-0">Counsellor</th>
                                         <th class="border-top-0">Date</th>
                                         <th class="border-top-0">Duration (Min)</th>
 
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($present_sessions as $session)
+                                    {{-- @foreach ($present_sessions as $session)
 
                                     <tr>
                                         <td>{{ $session->session }}</td>
@@ -129,7 +129,7 @@
                                         <td>{{ $session->Duration }}</td>
                                     </tr>
 
-                                    @endforeach
+                                    @endforeach --}}
 
 
                                 </tbody>

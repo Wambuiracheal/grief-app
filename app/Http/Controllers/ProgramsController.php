@@ -10,7 +10,8 @@ use App\Models\Sessions;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Models\Trainers;
+use App\Models\Controllers;
+use App\Models\Counsellors;
 
 class ProgramsController extends Controller
 {
@@ -21,15 +22,16 @@ class ProgramsController extends Controller
      */
     public function index()
     {
-        $programs = Programs::join('trainers','programs.TrainerId','=','trainers.id')
-        ->select('trainers.id As trainerId','trainers.Name As trainer','programs.id','programs.Name As program','programs.Day','programs.Duration','programs.Price')
+
+        $programs = Programs::join('counsellors', 'programs.CounsellorId', '=','counsellors.id')
+        ->select('counsellors.id As counsellorId', 'counsellors.Name as counsellor','programs.id','programs.Name As program','programs.Day','programs.Duration','programs.Price') 
         ->get();
 
-        $get_trainer_id = Trainers::select('id')
+        $get_counsellor_id = Counsellors::select('id')
         ->where('UserId',Auth::user()->id)
         ->first();
 
-        return view('Trainer/Programs', compact('programs','get_trainer_id'));
+        return view('Counsellor/Programs', compact('programs','get_counsellor_id'));
     }
 
     /**
@@ -61,16 +63,16 @@ class ProgramsController extends Controller
         $program = new Programs;
 
         $program->Name=$request->input('ProgramName');
-        $program->TrainerId=$request->input('TrainerId');
+        $program->CounsellorId=$request->input('CounsellorId');
         $program->Day=$request->input('Day');
         $program->Duration=$request->input('Duration');
         $program->Price=$request->input('Price');
 
 
-        Log::info($program);
+        //Log::info($program);
         $program->save();
 
-        return redirect('Trainer/Programs')->with('success','Program added successfully');
+        return redirect('Counsellor/Programs')->with('success','Program added successfully');
     }
 
     /**
@@ -98,13 +100,13 @@ class ProgramsController extends Controller
         ->get();
 
         $program = Programs::find($id)
-        ->join('trainers','programs.TrainerId','=','trainers.id')
+        ->join('counsellors','programs.CounsellorId','=','counsellors.id')
         ->select('programs.id','programs.Name As name','programs.Day','programs.Duration','programs.Price')
         ->where('programs.id',$id)
         ->limit(1)
         ->first();
 
-        return view('Trainer.show_program', compact('program', 'approved','pending'));
+        return view('Counsellor.show_program', compact('program', 'approved','pending'));
     }
 
     /**

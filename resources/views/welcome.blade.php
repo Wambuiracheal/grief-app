@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="TopGym Template">
-    <meta name="keywords" content="TopGym, unica, creative, html">
+    <meta name="description" content="CTG Template">
+    <meta name="keywords" content="CTG, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TopGym | Fitness </title>
+    <title>CTG</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,500,700,900" rel="stylesheet">
@@ -35,14 +35,14 @@
                     <div class="main-menu">
                         <div class="logo">
                             <a href="/">
-                                <img src="/images/logo.png" alt="">
+                                <img src="/images/logo.jpg" alt="">
                             </a>
                         </div>
                         <nav class="mobile-menu">
                             <ul>
 
                                 <li><a href="#aboutus">About us</a></li>
-                                <li><a href="#classes">Classes</a></li>
+                                <li><a href="#classes">Sessions</a></li>
                                 <li><a href="./elements.html"> &nbsp;</a></li>
                                 <li><a href="#services">Services</a></li>
                                 <li><a href="{{ route('login') }}">Login</a></li>
@@ -88,24 +88,23 @@
     <!-- Hero Slider Section Begin -->
     <section class="hero-slider">
         <div class="slide-items owl-carousel">
-            <div class="single-slide set-bg active" data-setbg="/images/bg1.jpg">
-
-                <h1>Be Fit.Top Gym</h1>
+            <div class="single-slide set-bg active" data-setbg="/images/bg-1.jpeg">
+                <h1>You are Not Alone</h1>
                 <a href="#services" class="primary-btn">Read More</a>
             </div>
-            <div class="single-slide set-bg" data-setbg="/images/bg-2.jpg">
+            <div class="single-slide set-bg" data-setbg="/images/bg-2.jpeg">
 
-                <h1>Be Fit.Top Trainer</h1>
+                <h1>You are Not Alone</h1>
                 <a href="#services" class="primary-btn">Read More</a>
             </div>
-            <div class="single-slide set-bg" data-setbg="/images/bg-3.jpg">
+            <div class="single-slide set-bg" data-setbg="/images/bg-3.jpeg">
 
-                <h1>Be Fit.Top Body</h1>
+                <h1>You are Not Alone</h1>
                 <a href="#services" class="primary-btn">Read More</a>
             </div>
-            <div class="single-slide set-bg" data-setbg="/images/bg4.jpg">
+            <div class="single-slide set-bg" data-setbg="/images/bg-4.jpeg">
 
-                <h1>Be Fit.Together</h1>
+                <h1>You are Not Alone</h1>
                 <a href="#services" class="primary-btn">Read More</a>
             </div>
         </div>
@@ -118,15 +117,14 @@
                 <div class="col-md-4">
                     <div class="single-features">
                         <div class="features-img">
-                            <img src="/images/gym2.jpeg" alt="">
+                            <img src="/images/s2.jpeg" alt="">
                         </div>
                         <div class="feature-text">
                             <div class="feature-icon">
                                 <img src="/images/features/icon-1.png" alt="">
                             </div>
-                            <h5>Amazing Setting</h5>
-                            <p>Our wide variety of equipment and calm setting keeps you pumped and motivated to give your body the
-                                right squeeze.
+                            <h5>Empowering Environment</h5>
+                            <p>Our compassionate and understanding community provides a safe space to share your experiences and connect with others on a similar journey.
                             </p>
                         </div>
                     </div>
@@ -134,29 +132,28 @@
                 <div class="col-md-4">
                     <div class="single-features">
                         <div class="features-img">
-                            <img src="/images/gym5.jpeg" alt="">
+                            <img src="/images/s1.jpeg" alt="">
                         </div>
                         <div class="feature-text">
                             <div class="feature-icon">
                                 <img src="/images/features/icon-2.png" alt="">
                             </div>
-                            <h5>Best Trainers</h5>
-                            <p>Our trainers and friendly staff offer professional services that guarantee you the desired end result.</p>
+                            <h5>Qualified Counselors</h5>
+                            <p>Connect with experienced grief counselors who can provide personalized guidance and support during this challenging time.</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="single-features">
                         <div class="features-img">
-                            <img src="/images/gym4.jpeg" alt="">
+                            <img src="/images/s3.jpeg" alt="">
                         </div>
                         <div class="feature-text">
                             <div class="feature-icon">
                                 <img src="/images/features/icon-3.png" alt="">
                             </div>
-                            <h5>Diet Plans</h5>
-                            <p>The right physique is achieved through a combined discipline of smart and correct dieting, which can be organized
-                                according to your training program.
+                            <h5>Flexible Scheduling</h5>
+                            <p>We offer convenient booking options to fit your needs, ensuring you can access support whenever you need it most.
                             </p>
                         </div>
                     </div>
@@ -180,103 +177,43 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-service">
                         <img src="/images/icon-1.png" alt="">
-                        <h5>Cardio</h5>
-                        <p>Your body might just need some intensive pump to get your heart beating in the right places and blood flowing in
-                            the right places.
+                        <h5>Individual Counselling</h5>
+                        <p>Connect with experienced therapists for personalized guidance and support tailored to your unique journey of grief.
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-service c-text">
                         <img src="/images/icon-2.png" alt="">
-                        <h5>Heavy Lifting</h5>
-                        <p>Aiming to improve your strength? Then the heavier the better, strong!!
-                            Our equipment entails various heavy weights that will just help you get that dream physique.
+                        <h5>Support Groups and Community</h5>
+                        <p>Find solace and understanding in connecting with others who share your experience. Participate in online or in-person groups focused on specific types of loss or general support.
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-service">
                         <img src="/images/icon-3.png" alt="">
-                        <h5>Yoga</h5>
-                        <p>Relaxation and strecthing to bring calmness to the entire human body. Recovery exercises to ease the mind and the soul.</p>
+                        <h5>Grief Education</h5>
+                        <p>Access comprehensive information about grief, its stages, coping mechanisms, and helpful resources tailored to different types of loss and cultural backgrounds.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-service">
                         <img src="/images/icon-4.png" alt="">
-                        <h5>Spinning</h5>
-                        <p>Hop on and get going. High intensive training programs incorporated in our Gym's facilities will send that stubborn fat
-                            right back to drain and have you enjoying your   cheat day.
+                        <h5>Peer Support and Mentorship</h5>
+                        <p>Connect with individuals who have walked a similar path of grief. Find encouragement, learn from their experiences, and offer support to others in turn.
                         </p>
                     </div>
                 </div>
             </div>
             <div class="row p-70">
                 <div class="col-lg-12 text-center">
-                    <a href="{{ route('register') }}" class="service-btn primary-btn">see all the services</a>
+                    <a href="https://chat.whatsapp.com/JAaMs74qDGVIZJLnJt0nXI" class="service-btn primary-btn">Join our Online community</a>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Services Section End -->
-    <!-- Trainer Section Begin -->
-    {{-- <section class="trainer-section set-bg" data-setbg="/images/trainer-bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="section-title">
-                        <span>The Best</span>
-                        <h2>Trainers</h2>
-                        <a href="#" class="primary-btn trainer-btn">See All</a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="single-trainer">
-                        <div class="trainer-img">
-                            <img src="/images/trainer/trainer-1.jpg" alt="">
-                            <div class="img-hover">
-                                <a href="#"><i class="fa fa-plus"></i></a>
-                            </div>
-                        </div>
-                        <div class="trainer-text">
-                            <h5>Rachel Smith <span>Aerobics Instructor</span></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="single-trainer">
-                        <div class="trainer-img">
-                            <img src="/images/trainer/trainer-2.jpg" alt="">
-                            <div class="img-hover">
-                                <a href="#"><i class="fa fa-plus"></i></a>
-                            </div>
-                        </div>
-                        <div class="trainer-text">
-                            <h5>Micheal Williams <span>Aerobics Instructor</span></h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="single-trainer">
-                        <div class="trainer-img">
-                            <img src="/images/trainer/trainer-3.jpg" alt="">
-                            <div class="img-hover">
-                                <a href="#"><i class="fa fa-plus"></i></a>
-                            </div>
-                        </div>
-                        <div class="trainer-text">
-                            <h5>James Brown <span>Aerobics Instructor</span></h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!-- Traniner Section End -->
-    <!-- Upcoming Event Begin -->
+
     <section class="upcoming-event-section spad-2" id="classes">
         <div class="container">
             <div class="row">
@@ -284,20 +221,16 @@
                     <div class="upcoming-classes">
                         <div class="up-title">
                             <span>Next</span>
-                            <h5>Upcomming Classes</h5>
+                            <h5>Upcoming Support Sessions</h5>
                         </div>
                         <ul class="classes-time">
-                            <li><img src="/images/stopwatch.png" alt=""> Gym Fitness <span>11:00 - 12:00</span></li>
-                            <li><img src="/images/stopwatch.png" alt=""> Pilates <span>12:00 - 13:00</span></li>
-                            <li><img src="/images/stopwatch.png" alt=""> Spinning <span>13:00 - 14:00</span></li>
-                            <li><img src="/images/stopwatch.png" alt=""> Yoga <span>14:00 - 15:00</span></li>
-                            <li><img src="/images/stopwatch.png" alt=""> Gym Fitness <span>15:00 - 16:00</span></li>
-                            <li><img src="/images/stopwatch.png" alt=""> Pilates <span>16:00 - 17:00</span></li>
+                            <li><img src="/images/stopwatch.png" alt="">Family Grief Support Group<span>Tuesday, 2024-04-09 at 18:00 PM</span></li>
+                            <li><img src="/images/stopwatch.png" alt="">Individual Grief Counseling (Adults)<span>Wednesday, 2024-04-10 at 10:00 AM</span></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="membership-card set-bg" data-setbg="/images/m-card.jpg">
+                    <div class="membership-card set-bg" data-setbg="/images/m-card.jpeg">
                         <div class="membership-details">
                             <div class="up-title">
                                 <span>Next</span>
@@ -310,14 +243,19 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-12">
-                    <div class="member-sign-up set-bg" data-setbg="/images/signup-bg.jpg">
+                    <div class="member-sign-up set-bg" data-setbg="/images/signup.jpeg">
                         <div class="up-title">
                             <span>New</span>
-                            <h5>Special Programs</h5>
+                            <h5>Grief Support Resources</h5>
                         </div>
-                        <p>Get started and join us. Lets take your body to the next level while helping you push past your limits. We work to help
-                            you achieve your fitness goals.
+                        <p>We understand that grief is a unique journey for every family. Explore our resources designed to provide support and guidance during this challenging time.
                         </p>
+                        <ul class="resources-list">
+                            <li><a href="#">Grief & Loss Articles</a></li>
+                            <li><a href="#">Children's Grief Activities</a></li>
+                            <li><a href="#">Coping Mechanisms for Families</a></li>
+                            <li><a href="#">Support Groups Near You</a></li>
+                          </ul>
                         <div class="member-signup-btn">
                             <a href="{{ route('register') }}" class="primary-btn">Sign up Now</a>
                         </div>

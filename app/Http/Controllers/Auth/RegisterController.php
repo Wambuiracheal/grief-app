@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Clients;
-use App\Models\Trainers;
+use App\Models\Counsellors;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
+
 
 class RegisterController extends Controller
 {
@@ -78,7 +80,7 @@ class RegisterController extends Controller
             'UserId' => $user->id,
             'Name' => $user->name,
             'Phone' => $data['phone'],
-            'Workout_plan' => $data['workoutplan'],
+            'type_of_loss' => $data['type_of_loss'],
         ]);
 
         return $user;

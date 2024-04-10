@@ -20,7 +20,7 @@ class Programs extends Model
         'Name',
         'Day',
         'Duration',
-        'TrainerId',
+        'CounsellorId',
         'Price',
 
     ];

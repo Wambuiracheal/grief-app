@@ -49,9 +49,9 @@ class LoginController extends Controller
         ]);
 
         if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
-            if (auth()->user()->type == 'trainer')
+            if (auth()->user()->type == 'counsellor')
             {
-                return redirect()->route('trainer.index');
+                return redirect()->route('counsellor.index');
             }
             elseif (auth()->user()->type == 'client')
             {

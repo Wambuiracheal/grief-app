@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Programs;
-use App\Models\Trainers;
+use App\Models\Counsellors;
 
 class SessionsController extends Controller
 {
@@ -25,41 +25,44 @@ class SessionsController extends Controller
         ->where('UserId',Auth::user()->id)
         ->first();
 
-        $bookings = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
+        $bookings = Sessions::join('counsellors','sessions.CounsellorId','=','counsellors.id')
         ->join('programs','sessions.ProgramId','=','programs.id')
-        ->select('trainers.Name as trainer','sessions.ClientId as client','programs.Name as session','sessions.Duration','sessions.Date')
-        ->where('ClientId',$get_client_id->id)
-        ->where('sessions.Status','Approved')
+        ->select('counsellors.Name as counsellor','sessions.ClientId as client','programs.Name as session','sessions.Duration','sessions.Date')
+        //->where('ClientId',$get_client_id->id)
+        //->where('sessions.Status','Approved')
         ->paginate(3);
 
-        $present_sessions = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
-        ->join('programs','sessions.ProgramId','=','programs.id')
-        ->select('trainers.Name as trainer','sessions.ClientId as client','programs.Name as session','sessions.Attendance','sessions.Duration','sessions.Date')
-        ->where('ClientId',$get_client_id->id)
-        ->where('sessions.Status','Present')
-        ->get();
+        // $present_sessions = Sessions::join('counsellors','sessions.CounsellorId','=','counsellors.id')
+        // ->join('programs','sessions.ProgramId','=','programs.id')
+        // ->select('counsellors.Name as counsellor','sessions.ClientId as client','programs.Name as session','sessions.Duration','sessions.Date')
+        // ->where('ClientId',$get_client_id->id)
+        // //->where('sessions.Status','Present')
+        // ->get();
 
-        $programs = Programs::join('trainers','programs.TrainerId','=','trainers.id')
-        ->select('trainers.id As trainerId','trainers.Name As trainer','programs.Name As program','programs.Day','programs.Duration','programs.Price')
+        $programs = Programs::join('counsellors','programs.CounsellorId','=','counsellors.id')
+        ->select('counsellors.id As CounsellorId','counsellors.Name As counsellor','programs.Name As program','programs.Day','programs.Duration','programs.Price')
         ->paginate(3);
 
-        return view('index', compact('bookings','present_sessions','programs'));
+        return view('index', compact('bookings',
+        //'present_sessions',
+        'programs'
+    ));
     }
 
     public function booksession()
     {
-        $programs = Programs::join('trainers','programs.TrainerId','=','trainers.id')
-        ->select('trainers.id As trainerId','trainers.Name As trainer','programs.id','programs.Name As program','programs.Day','programs.Duration','programs.Price')
+        $programs = Programs::join('counsellors','programs.CounsellorId','=','counsellors.id')
+        ->select('counsellors.id As CounsellorId','counsellors.Name As Counsellor','programs.id','programs.Name As program','programs.Day','programs.Duration','programs.Price')
         ->get();
 
         $get_client_id = Clients::select('id')
         ->where('UserId',Auth::user()->id)
         ->first();
 
-        $trainers = Trainers::select('id','Name')->get();
-        Log::info($trainers);
+        $counsellors = Counsellors::select('id','Name')->get();
+        Log::info($counsellors);
 
-        return view('/book-session', compact('programs','get_client_id','trainers'));
+        return view('/book-session', compact('programs','get_client_id','counsellors'));
     }
 
     public function sessions()
@@ -68,9 +71,9 @@ class SessionsController extends Controller
         ->where('UserId',Auth::user()->id)
         ->first();
 
-        $Allsessions = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
+        $Allsessions = Sessions::join('counsellors','sessions.CounsellorId','=','counsellors.id')
         ->join('programs','sessions.ProgramId','=','programs.id')
-        ->select('trainers.Name as trainer','sessions.ClientId as client','programs.Name as session','sessions.Duration','sessions.Date','sessions.Status','sessions.Attendance')
+        ->select('counsellors.Name as counsellor','sessions.ClientId as client','programs.Name as session','sessions.Duration','sessions.Date','sessions.Status','sessions.Attendance')
         ->where('ClientId',$get_client_id->id)
         ->get();
 
@@ -79,27 +82,29 @@ class SessionsController extends Controller
 
     public function approvedsessions()
     {
-        $get_trainer_id = Trainers::select('id')
+        $get_counsellor_id = Counsellors::select('id')
         ->where('UserId',Auth::user()->id)
         ->first();
 
-        $Allsessions = Sessions::join('trainers','sessions.TrainerId','=','trainers.id')
+        $Allsessions = Sessions::join('counsellors','sessions.Id','=','counsellors.id')
         ->join('clients','sessions.ClientId','=','clients.id')
         ->join('programs','sessions.ProgramId','=','programs.id')
-        ->select('trainers.Name as trainer','sessions.ClientId as clientId','clients.Name as client','sessions.id','programs.Name as session','sessions.Duration','sessions.Date','sessions.Status',
-        'sessions.ProgramId','sessions.Attendance')
-        ->where('sessions.TrainerId',$get_trainer_id->id)
+        ->select('counsellors.Name as counsellor','sessions.ClientId as clientId','clients.Name as client','sessions.id','programs.Name as session','sessions.Duration','sessions.Date','sessions.Status',
+        'sessions.ProgramId',
+        'sessions.Attendance'
+        )
+        ->where('sessions.Id',$get_counsellor_id->id)
         ->where('sessions.Status','Approved')
         ->orderby('sessions.created_at','DESC')
         ->get();
 
-        return view('Trainer/Sessions', compact('Allsessions'));
+        return view('Counsellor/Sessions', compact('Allsessions'));
 
     }
 
     public function mark_attendance(Request $request, Sessions $id)
     {
-       
+
         $session = Sessions::where('id',$id->id)
         ->update([
             'Attendance'=>$request->Attendance
@@ -127,9 +132,10 @@ class SessionsController extends Controller
     public function store(Request $request)
     {
         Log::info($request);
+
         $this->validate($request,[
             'Program' => 'required',
-            'Trainer' => 'required',
+            'Counsellor' => 'required',
             'Date' => 'required',
             'Duration' => 'required',
 
@@ -139,7 +145,7 @@ class SessionsController extends Controller
 
         $session->ClientId=$request->input('ClientId');
         $session->ProgramId=$request->input('Program');
-        $session->TrainerId=$request->input('Trainer');
+        $session->CounsellorId=$request->input('Counsellor');
         $session->Date=$request->input('Date');
         $session->Duration=$request->input('Duration');
 

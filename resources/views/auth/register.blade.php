@@ -151,11 +151,6 @@
                 position: relative;
             }
 
-
-
-
-
-
             .login-box .socials a {
                 -webkit-box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.12);
                 box-shadow: 0 3px 2px 0 rgba(0, 0, 0, 0.12);
@@ -174,7 +169,8 @@
                 margin-right: 10px;
                 -webkit-transition: all 0.3s ease;
                 transition: all 0.3s ease;
-            }y: 0.10;
+            }
+            y: 0.10;
             right: 0;
             left: 0;
             bottom: 0;
@@ -305,8 +301,7 @@
                                             <div class="col-12">
                                                 <div class="form-group position-relative">
                                                     <span class="zmdi zmdi-account"></span>
-                                                    <input id="workoutplan" type="text" class="form-control @error('name') is-invalid @enderror" name="workoutplan" autofocus placeholder="Workout plan e.g Cardio, Weight lifting">
-                                                </div>
+                                                    <input id="type_of_loss" type="text" class="form-control @error('name') is-invalid @enderror" name="type_of_loss" autofocus placeholder="type of lose e.g sibling, parent">                                                </div>
                                                 @error('name')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>

@@ -38,21 +38,21 @@
                                         <h4 class="card-title m-t-10">{{ $profile->Name }}</h4>
                                         <h6 class="card-subtitle">{{ $profile->Sector }}</h6>
                                         <div class="row text-center justify-content-md-center">
-                                            <div class="col-4">
+                                            <div class="col-6">
                                                 <a href="javascript:void(0)" class="link"><i
                                                         class="icon-people"></i>
-                                                    <font class="font-medium">Training</font>
+                                                    <font class="font-medium">Counselling</font>
                                                     <br>
-                                                    <font class="font-medium">254 hrs</font>
+                                                    <font class="font-medium">120 hrs</font>
 
                                                 </a>
                                             </div>
-                                            <div class="col-4">
+                                            <div class="col-6">
                                                 <a href="javascript:void(0)" class="link"><i
                                                         class="icon-picture"></i>
                                                         <font class="font-medium">Sessions</font>
                                                         <br>
-                                                        <font class="font-medium">5</font>
+                                                        <font class="font-medium">3</font>
                                                 </a>
                                             </div>
                                         </div>
@@ -85,13 +85,13 @@
                                                     class="form-control form-control-line">
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label class="col-md-12">Workout_plan</label>
                                             <div class="col-md-12">
-                                                <input type="text" placeholder="{{ $profile->Workout_plan }}"
+                                                <input type="text" placeholder="{{ $profile-> }}"
                                                     class="form-control form-control-line">
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="form-group">
                                             <label for="example-email" class="col-md-12">Email</label>
                                             <div class="col-md-12">
