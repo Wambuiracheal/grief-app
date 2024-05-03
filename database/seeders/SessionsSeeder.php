@@ -16,7 +16,7 @@ class SessionsSeeder extends Seeder
     {
         // DB::table('sessions')->insert([
         //     'UserId'=>1,
-        //     'Name' => 'Trainer George',
+        //     'Name' => 'counsellor George',
         //     'Phone' => '+254785324',
         //     'Sector' => 'Cardio',
 

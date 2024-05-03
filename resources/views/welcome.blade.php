@@ -89,22 +89,25 @@
     <section class="hero-slider">
         <div class="slide-items owl-carousel">
             <div class="single-slide set-bg active" data-setbg="/images/bg-1.jpeg">
-                <h1>You are Not Alone</h1>
+                <h1>Compass Through Grief</h1>
                 <a href="#services" class="primary-btn">Read More</a>
             </div>
             <div class="single-slide set-bg" data-setbg="/images/bg-2.jpeg">
 
-                <h1>You are Not Alone</h1>
+                <h1>Compass Through Grief</h1>
+                
                 <a href="#services" class="primary-btn">Read More</a>
             </div>
             <div class="single-slide set-bg" data-setbg="/images/bg-3.jpeg">
 
-                <h1>You are Not Alone</h1>
+                <h1>Compass Through Grief</h1>
+                
                 <a href="#services" class="primary-btn">Read More</a>
             </div>
             <div class="single-slide set-bg" data-setbg="/images/bg-4.jpeg">
 
-                <h1>You are Not Alone</h1>
+                <h1>Compass Through Grief</h1>
+                
                 <a href="#services" class="primary-btn">Read More</a>
             </div>
         </div>
@@ -251,10 +254,9 @@
                         <p>We understand that grief is a unique journey for every family. Explore our resources designed to provide support and guidance during this challenging time.
                         </p>
                         <ul class="resources-list">
-                            <li><a href="#">Grief & Loss Articles</a></li>
-                            <li><a href="#">Children's Grief Activities</a></li>
-                            <li><a href="#">Coping Mechanisms for Families</a></li>
-                            <li><a href="#">Support Groups Near You</a></li>
+                            <li><a href="https://www.helpguide.org/articles/grief/coping-with-grief-and-loss.htm">Grief & Loss Articles</a></li>
+                            <li><a href="https://www.unicef.org/armenia/en/stories/strategies-cope-grief">Children's Grief Activities</a></li>
+                            <li><a href="https://raisingchildren.net.au/teens/communicating-relationships/death-grief/parent-sibling-death-long-term-support-teenagers#:~:text=After%20a%20sibling%20or%20parent,will%20probably%20change%20over%20time.">Parent and Sibling Loss</a></li>
                           </ul>
                         <div class="member-signup-btn">
                             <a href="{{ route('register') }}" class="primary-btn">Sign up Now</a>

@@ -17,12 +17,23 @@ class ProgramsSeeder extends Seeder
     {
         DB::table('programs')->insert([
 
-            'Name' => 'Parent Counselling',
+         [   'Name' => 'Parent Counselling',
             'Day' => 'Monday',
             'Duration' => '45',
             'CounsellorId' => 1,
             'Price' => '3500',
+        ],
 
-        ]);
+        [
+
+            'Name' => 'Sibling Counselling',
+            'Day' => 'Tuesday',
+            'Duration' => '55',
+            'CounsellorId' => 2,
+            'Price' => '4500',
+        ]
+    
+    ]);
+
     }
 }

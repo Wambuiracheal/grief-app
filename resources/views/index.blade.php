@@ -66,9 +66,7 @@
                             <h6 class="card-subtitle">Counselling programs</h6>
                                 @foreach ($programs as $program)
                                     <div class="mt-5  d-flex align-items-center">
-                                        <span class="btn btn-primary btn-circle d-flex align-items-center">
-                                            <i class="mdi mdi-dumbbell fs-4" ></i>
-                                        </span>
+                    
                                         <div class="ms-3">
                                             <h5 class="mb-0 fw-bold">{{ $program->program }}</h5>
                                             <span class="text-muted fs-6">{{ $program->trainer }}</span>
